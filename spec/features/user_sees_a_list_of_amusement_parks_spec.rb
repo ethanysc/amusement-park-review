@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-# [] Visiting the `/amusement_parks` path should contain a list of amusement parks.
-# [] Visiting the root path should display a list of all amusement parks.
+# [x] Visiting the `/amusement_parks` path should contain a list of amusement parks.
+# [x] Visiting the root path should display a list of all amusement parks.
 
 feature "visitor sees a list of amusement parks" do
   scenario "sees a list of amusement parks" do
@@ -16,6 +16,7 @@ feature "visitor sees a list of amusement parks" do
     expect(page).not_to have_content "85 N Policy St."
 
     visit root_path
+
     expect(page).to have_content "Six Flags New England"
     expect(page).to have_content "Canobie Lake Park"
     expect(page).not_to have_content "1623 Main St."
