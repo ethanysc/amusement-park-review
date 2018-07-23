@@ -1,24 +1,5 @@
+[![Build Status](https://codeship.com/projects/<3e8e7a60-70ca-0136-6e87-260beb728e3c>/status?branch=master)
+
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+More information to be added later...
