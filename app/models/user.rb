@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
+
+  def will_save_change_to_profile_photo?
+    false
+  end
 end
