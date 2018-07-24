@@ -21,9 +21,9 @@ class AmusementParksIndexContainer extends React.Component {
       }
     })
     .then(response => response.json())
-    .then(parks => {
+    .then(resp => {
       this.setState({
-        amusementParks: parks.amusement_parks
+        amusementParks: resp.amusement_parks
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
