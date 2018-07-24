@@ -15,7 +15,7 @@ class AmusementParksIndexContainer extends React.Component {
       if (response.ok) {
         return response
       } else {
-        let errrorMessage = `${response.status} (${rsponse.statusText})`,
+        let errrorMessage = `${response.status} (${response.statusText})`,
           error = new Error(errrorMessage)
         throw(error)
       }
@@ -23,7 +23,7 @@ class AmusementParksIndexContainer extends React.Component {
     .then(response => response.json())
     .then(parks => {
       this.setState({
-        amusementParks: parks
+        amusementParks: parks.amusement_parks
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -41,6 +41,8 @@ class AmusementParksIndexContainer extends React.Component {
 
     return(
       <div>
+        <h1>Amusement Parks:</h1>
+
         {amusementParks}
       </div>
     )
