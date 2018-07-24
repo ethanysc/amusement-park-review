@@ -4,7 +4,7 @@ const ParkTile = props => {
 
   return(
     <div>
-      {props.name}
+      <a href={`/amusement_parks/${props.id}`}>{props.name}</a>
     </div>
   )
 }

@@ -33,6 +33,7 @@ class AmusementParksIndexContainer extends React.Component {
     let amusementParks = this.state.amusementParks.map((park) => {
       return(
         <ParkTile
+          id={park.id}
           key={park.id}
           name={park.name}
         />
