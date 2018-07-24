@@ -16,18 +16,30 @@ RSpec.describe AmusementPark, type: :model do
    it "is valid with all fields required filled in" do
      expect(park).to be_valid
    end
-
-   it "is not valid with a required field missing" do
+   it "is invalid if name not specified" do
      expect(park2).to_not be_valid
+   end
+   it "is invalid with an address not specified" do
      expect(park3).to_not be_valid
+   end
+   it "is invalid with a city not specified" do
      expect(park4).to_not be_valid
+   end
+   it "is invalid with a state not specified" do
      expect(park5).to_not be_valid
+   end
+   it "is invalid with a zipcode not specified" do
      expect(park6).to_not be_valid
+   end
+   it "is invalid with a phone number not specified" do
      expect(park7).to_not be_valid
+   end
+   it "is invalid with an operating season not specified" do
      expect(park8).to_not be_valid
+   end
+   it "is invalid with a website not specified" do
      expect(park9).to_not be_valid
    end
-
 
   end
  end
