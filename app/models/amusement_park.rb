@@ -7,4 +7,6 @@ class AmusementPark < ApplicationRecord
   validates :phone_number, presence: true
   validates :website, presence: true
   validates :operating_season, presence: true
+
+  has_many :reviews
 end
