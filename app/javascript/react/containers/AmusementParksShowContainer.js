@@ -8,7 +8,8 @@ class AmusementParksShowContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      amusementPark: {}
+      amusementPark: {},
+      reviews: []
     };
   }
 
@@ -18,22 +19,25 @@ class AmusementParksShowContainer extends React.Component {
       if (response.ok) {
         return response;
       } else {
-        let errrorMessage = `${response.status} (${response.statusText})`,
+        let errorMessage = `${response.status} (${response.statusText})`,
           error = new Error(errorMessage);
         throw(error);
       }
     })
     .then(response => response.json())
-    .then(body => { this.setState({
-        amusementPark: body.amusement_park
+    .then(body => {
+      this.setState({
+        amusementPark: body.park,
+        reviews: body.reviews
       })
     })
     .catch(error => console.error(`Error in park fetch: ${error.message}`));
   }
 
   render(){
+    let park = this.state.amusementPark;
+    let reviews = this.state.reviews;
 
-    let park = this.state.amusementPark
     return(
       <div>
         <ParkInfoTile
@@ -48,8 +52,8 @@ class AmusementParksShowContainer extends React.Component {
           website={park.website}
         />
         <ReviewsContainer
-          id={park.id}
-          />
+          reviews={reviews}
+        />
         <ReviewFormContainer />
       </div>
     )

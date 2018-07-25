@@ -1,10 +1,9 @@
 import React from 'react'
 
 const ReviewTile = (props) => {
-
-  let reviewBody = this.props.review.body
-  let reviewOverallRating = this.props.review.overall_rating
-  let createdDate = this.props.review.created_at
+  let reviewBody = props.review.body
+  let reviewOverallRating = props.review.overall_rating
+  let createdDate = props.review.created_at
 
   return(
     <div>

@@ -16,8 +16,8 @@ class AmusementParksIndexContainer extends React.Component {
       if (response.ok) {
         return response
       } else {
-        let errrorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errrorMessage)
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
         throw(error)
       }
     })
