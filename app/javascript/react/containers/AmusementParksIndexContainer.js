@@ -1,4 +1,5 @@
 import React from 'react'
+
 import ParkTile from '../components/ParkTile'
 
 class AmusementParksIndexContainer extends React.Component {

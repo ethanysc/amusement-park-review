@@ -1,15 +1,39 @@
 import React from 'react';
 
+import ReviewTile from '../components/ReviewTile'
+
 class ReviewsContainer extends React.Component {
   constructor(props){
     super(props)
-    this.state = {}
+    this.state = {
+      reviews: []
+    }
+  }
+
+  componentDidMount(){
+    fetch(`/api/v1/amusement_parks/${this.props.id}/reviews`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errrorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => { this.setState({
+        reviews: body.reviews
+      })
+    })
+    .catch(error => console.error(`Error in review fetch: ${error.message}`));
   }
 
   render(){
-    let reviews = this.props.reviews.map((review) => {
+    let reviews = this.state.reviews.map((review) => {
       return(
-        < ReviewTile
+        <ReviewTile
+          key={review.id}
           id={review.id}
           review={review}
         />
@@ -17,8 +41,10 @@ class ReviewsContainer extends React.Component {
     })
     return(
       <div>
-        {review}
+        {reviews}
       </div>
     )
   }
 }
+
+export default ReviewsContainer

@@ -1,12 +1,14 @@
 import React from 'react';
-import ParkInfoTile from '../components/ParkInfoTile';
+
+import ParkInfoTile from '../components/ParkInfoTile'
+import ReviewsContainer from './ReviewsContainer'
+import ReviewFormContainer from './ReviewFormContainer'
 
 class AmusementParksShowContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      amusementPark: {},
-      reviews: []
+      amusementPark: {}
     };
   }
 
@@ -23,14 +25,14 @@ class AmusementParksShowContainer extends React.Component {
     })
     .then(response => response.json())
     .then(body => { this.setState({
-        amusementPark: body.amusement_park,
-        reviews: body.amusement_park.reviews
+        amusementPark: body.amusement_park
       })
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .catch(error => console.error(`Error in park fetch: ${error.message}`));
   }
 
   render(){
+
     let park = this.state.amusementPark
     return(
       <div>
@@ -46,8 +48,8 @@ class AmusementParksShowContainer extends React.Component {
           website={park.website}
         />
         <ReviewsContainer
-          reviews={this.state.reviews}
-        />
+          id={park.id}
+          />
         <ReviewFormContainer />
       </div>
     )
