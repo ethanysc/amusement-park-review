@@ -5,7 +5,8 @@ class AmusementParksShowContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      amusementPark: {}
+      amusementPark: {},
+      reviews: []
     };
   }
 
@@ -22,7 +23,8 @@ class AmusementParksShowContainer extends React.Component {
     })
     .then(response => response.json())
     .then(body => { this.setState({
-        amusementPark: body.amusement_park
+        amusementPark: body.amusement_park,
+        reviews: body.amusement_park.reviews
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -43,6 +45,10 @@ class AmusementParksShowContainer extends React.Component {
           operating_season={park.operating_season}
           website={park.website}
         />
+        <ReviewsContainer
+          reviews={this.state.reviews}
+        />
+        <ReviewFormContainer />
       </div>
     )
   }

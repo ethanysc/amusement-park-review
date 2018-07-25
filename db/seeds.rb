@@ -5,14 +5,41 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AmusementPark.create!(
+ap1 = AmusementPark.create!(
   name: "Six Flags New England",
   address: "1623 Main St.", city: "Agawam",
   state: "Massachusetts", zipcode: "01001",
   phone_number: "(413) 786-9300",
   website: "https://www.sixflags.com/newengland",
   operating_season: "April through late December")
-AmusementPark.create!(name: "Canobie Lake Park", address: "85 N Policy St.", city: "Salem", state: "New Hampshire", zipcode: "03079", phone_number: "(603) 893-3506", website: "http://www.canobie.com/", operating_season: "May to late October", description: "Amusement Park on the shore of Canobie Lake.")
-AmusementPark.create!(name: "Hersheypark", address: "100 Hersheypark Dr.", city: "Hershey", state: "Pennsylvania", zipcode: "17033", phone_number: "(800) 437-7439", website: "http://www.hersheypark.com/", operating_season: "Year Round", description: "Family theme park situated in Hershey.")
-AmusementPark.create!(name: "Magic Kingdom", address: "1180 Seven Seas Dr", city: "Lake Buena Vista", state: "Florida", zipcode: "32830", phone_number: "(407) 566-4985", website: "https://disneyworld.disney.go.com/destinations/magic-kingdom/?CMP=OKC-wdw_themeparks_gmap_189", operating_season: "Year Round")
-AmusementPark.create!(name: "Dollywood Theme Park", address: "2700 Dollywood Parks Blvd.", city: "Pigeon Forge", state: "Tennessee", zipcode: "37863", phone_number: "1-800-365-5996", website: "https://www.dollywood.com/", operating_season: "March through December")
+ap2 = AmusementPark.create!(name: "Canobie Lake Park", address: "85 N Policy St.", city: "Salem", state: "New Hampshire", zipcode: "03079", phone_number: "(603) 893-3506", website: "http://www.canobie.com/", operating_season: "May to late October", description: "Amusement Park on the shore of Canobie Lake.")
+ap3 = AmusementPark.create!(name: "Hersheypark", address: "100 Hersheypark Dr.", city: "Hershey", state: "Pennsylvania", zipcode: "17033", phone_number: "(800) 437-7439", website: "http://www.hersheypark.com/", operating_season: "Year Round", description: "Family theme park situated in Hershey.")
+ap4 = AmusementPark.create!(name: "Magic Kingdom", address: "1180 Seven Seas Dr", city: "Lake Buena Vista", state: "Florida", zipcode: "32830", phone_number: "(407) 566-4985", website: "https://disneyworld.disney.go.com/destinations/magic-kingdom/?CMP=OKC-wdw_themeparks_gmap_189", operating_season: "Year Round")
+ap5 = AmusementPark.create!(name: "Dollywood Theme Park", address: "2700 Dollywood Parks Blvd.", city: "Pigeon Forge", state: "Tennessee", zipcode: "37863", phone_number: "1-800-365-5996", website: "https://www.dollywood.com/", operating_season: "March through December")
+
+user1 = FactoryBot.create(:user)
+user2 = FactoryBot.create(
+  :user,
+  email: 'ravikc@gmail.com',
+  password: 'apple1234',
+  username: 'ravikc'
+)
+
+FactoryBot.create(
+  :review,
+  user: user2,
+  amusement_park: ap1
+)
+FactoryBot.create(
+  :review,
+  overall_rating: 2,
+  body: 'Worst park Ive ever been to',
+  rides_rating: 2,
+  food_rating: 3,
+  atmosphere_rating: 2,
+  shows_rating: 1,
+  staff_rating: 4,
+  price_rating: 0,
+  user: user1,
+  amusement_park: ap1
+)

@@ -4,7 +4,7 @@ import fetchMock from 'fetch-mock';
 
 
 
-describe('Amusement Parks Index', () => {
+describe('Amusement Parks Show', () => {
   let wrapper;
   let park;
 
@@ -21,7 +21,7 @@ describe('Amusement Parks Index', () => {
       website: "https://www.sixflags.com/newengland",
       operating_season: "April through late December"
     };
-    
+
     fetchMock.get(`/api/v1/amusement_parks/${park.id}`, {
       status: 200,
       body: {"amusement_park": park}
@@ -69,6 +69,14 @@ describe('Amusement Parks Index', () => {
     it('render the parks zipcode', (done) => {
       setTimeout(() => {
         expect(wrapper.text()).toMatch('01001')
+        done()
+
+      }, 0)
+    })
+
+    it('render the review body', (done) => {
+      setTimeout(() => {
+        expect(wrapper.text()).toMatch('This place rocks!')
         done()
 
       }, 0)
