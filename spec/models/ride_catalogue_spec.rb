@@ -21,7 +21,5 @@ RSpec.describe RideCatalogue, type: :model do
    it "is invalid if ride_feature is not specified" do
      expect(ride_catalogue3).to_not be_valid
    end
-
-
  end
 end

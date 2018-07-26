@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_144035) do
+ActiveRecord::Schema.define(version: 2018_07_26_144658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 2018_07_25_144035) do
 
   create_table "ride_features", force: :cascade do |t|
     t.string "name", null: false
+  end
+
+  create_table "ride_reviews", force: :cascade do |t|
+    t.integer "rating", null: false
+    t.text "body"
+    t.bigint "ride_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ride_id"], name: "index_ride_reviews_on_ride_id"
+    t.index ["user_id"], name: "index_ride_reviews_on_user_id"
   end
 
   create_table "rides", force: :cascade do |t|
