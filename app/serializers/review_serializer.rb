@@ -10,6 +10,5 @@ class ReviewSerializer < ActiveModel::Serializer
    :price_rating,
    :created_at
 
-   belongs_to :amusement_park
    belongs_to :user
 end

@@ -11,6 +11,15 @@ class Api::V1::AmusementParksController < ApplicationController
     # }
     # render json: payload
 
-    render json: AmusementPark.find(params[:id])
+    # render json: AmusementPark.find(params[:id])
+    # render json: AmusementPark.find(params[:id]).reviews
+    render json: {
+      amusement_park: AmusementPark.find(params[:id]),
+      reviews: serialized_review
+    }
+  end
+
+  def serialized_review
+    ActiveModel::Serializer::ArraySerializer.new(AmusementPark.find(params[:id]).reviews, each_serializer: ReviewSerializer)
   end
 end
