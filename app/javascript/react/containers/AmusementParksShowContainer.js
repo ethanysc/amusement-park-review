@@ -28,7 +28,7 @@ class AmusementParksShowContainer extends React.Component {
     .then(body => {
       this.setState({
         amusementPark: body.amusement_park,
-        reviews: body.amusement_park.reviews
+        reviews: body.reviews
       })
     })
     .catch(error => console.error(`Error in park fetch: ${error.message}`));

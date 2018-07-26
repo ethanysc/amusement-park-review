@@ -26,7 +26,6 @@ class ReviewFormContainer extends React.Component {
       this.validateOverallRatingEntry(event.target.value)
     }
     this.setState({ [event.target.name]: event.target.value })
-    debugger
   }
 
   handleSubmit(event){
@@ -62,7 +61,7 @@ class ReviewFormContainer extends React.Component {
   }
 
   render(){
-    debugger
+    console.log(this.state.overall_rating)
     let errorDiv
     let errorItems
     if (Object.keys(this.state.errors).length > 0) {
