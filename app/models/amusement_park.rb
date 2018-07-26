@@ -9,4 +9,5 @@ class AmusementPark < ApplicationRecord
   validates :operating_season, presence: true
 
   has_many :reviews
+  has_many :rides
 end

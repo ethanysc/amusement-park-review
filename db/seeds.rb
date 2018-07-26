@@ -1,18 +1,254 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 AmusementPark.create!(
   name: "Six Flags New England",
-  address: "1623 Main St.", city: "Agawam",
-  state: "Massachusetts", zipcode: "01001",
+  address: "1623 Main St.",
+  city: "Agawam",
+  state: "Massachusetts",
+  zipcode: "01001",
   phone_number: "(413) 786-9300",
   website: "https://www.sixflags.com/newengland",
   operating_season: "April through late December")
-AmusementPark.create!(name: "Canobie Lake Park", address: "85 N Policy St.", city: "Salem", state: "New Hampshire", zipcode: "03079", phone_number: "(603) 893-3506", website: "http://www.canobie.com/", operating_season: "May to late October", description: "Amusement Park on the shore of Canobie Lake.")
-AmusementPark.create!(name: "Hersheypark", address: "100 Hersheypark Dr.", city: "Hershey", state: "Pennsylvania", zipcode: "17033", phone_number: "(800) 437-7439", website: "http://www.hersheypark.com/", operating_season: "Year Round", description: "Family theme park situated in Hershey.")
-AmusementPark.create!(name: "Magic Kingdom", address: "1180 Seven Seas Dr", city: "Lake Buena Vista", state: "Florida", zipcode: "32830", phone_number: "(407) 566-4985", website: "https://disneyworld.disney.go.com/destinations/magic-kingdom/?CMP=OKC-wdw_themeparks_gmap_189", operating_season: "Year Round")
-AmusementPark.create!(name: "Dollywood Theme Park", address: "2700 Dollywood Parks Blvd.", city: "Pigeon Forge", state: "Tennessee", zipcode: "37863", phone_number: "1-800-365-5996", website: "https://www.dollywood.com/", operating_season: "March through December")
+AmusementPark.create!(
+  name: "Canobie Lake Park",
+  address: "85 N Policy St.",
+  city: "Salem",
+  state: "New Hampshire",
+  zipcode: "03079",
+  phone_number: "(603) 893-3506",
+  website: "http://www.canobie.com/",
+  operating_season: "May to late October",
+  description: "Amusement Park on the shore of Canobie Lake.")
+AmusementPark.create!(
+  name: "Hersheypark",
+  address: "100 Hersheypark Dr.",
+  city: "Hershey",
+  state: "Pennsylvania",
+  zipcode: "17033",
+  phone_number: "(800) 437-7439",
+  website: "http://www.hersheypark.com/",
+  operating_season: "Year Round",
+  description: "Family theme park situated in Hershey.")
+AmusementPark.create!(
+  name: "Six Flags Great Adventure",
+  address: "1 Six Flags Blvd",
+  city: "Jackson",
+  state: "New Jersey",
+  zipcode: "08527",
+  phone_number: "(732) 928-2000",
+  website: "https://www.sixflags.com/greatadventure",
+  operating_season: "Late March - Early December",
+  description: "Amusement park combined with a Wild Safari animal park, the second largest theme park in the world!"
+  )
+AmusementPark.create!(
+  name: "Sesame Place",
+  address: "100 Sesame Rd",
+  city: "Langhorn",
+  state: "Pennsylvania",
+  zipcode: "19047",
+  phone_number: "1-215-702-ELMO",
+  website: "https://sesameplace.com/philadelphia/?utm_source=YEXT&utm_medium=organic&utm_campaign=YEXT",
+  operating_season: "May through December",
+  description: "Children's theme park, located on the outskirts of Philadelphia, based on the Sesame Street television program."
+)
+
+Ride.create!(
+  name: "Superman the Ride",
+  amusement_park: AmusementPark.find(1)
+)
+Ride.create!(
+  name: "Batman the Dark Knight",
+  amusement_park: AmusementPark.find(1)
+)
+Ride.create!(
+  name: "Goliath",
+  amusement_park: AmusementPark.find(1)
+)
+Ride.create!(
+  name: "Yankee Cannonball",
+  amusement_park: AmusementPark.find(2)
+)
+Ride.create!(
+  name: "Starblaster",
+  amusement_park: AmusementPark.find(2)
+)
+Ride.create!(
+  name: "Boston Tea Party",
+  amusement_park: AmusementPark.find(2)
+)
+Ride.create!(
+  name: "Great Bear",
+  amusement_park: AmusementPark.find(3)
+)
+Ride.create!(
+  name: "Lightning Racer",
+  amusement_park: AmusementPark.find(3)
+)
+Ride.create!(
+  name: "Skyrush",
+  amusement_park: AmusementPark.find(3)
+)
+Ride.create!(
+  name: "Zumanjaro: Drop of Doom",
+  amusement_park: AmusementPark.find(4)
+)
+Ride.create!(
+  name: "Dark Knight Coaster",
+  amusement_park: AmusementPark.find(4)
+)
+Ride.create!(
+  name: "Superman: Ultimate Flight",
+  amusement_park: AmusementPark.find(4)
+)
+Ride.create!(
+  name: "El Toro",
+  amusement_park: AmusementPark.find(4)
+)
+Ride.create!(
+  name: "CYBORG Cyber Spin",
+  amusement_park: AmusementPark.find(4)
+)
+Ride.create!(
+  name: "Sky Splash",
+  amusement_park: AmusementPark.find(5)
+)
+Ride.create!(
+  name: "Slippery Slopes",
+  amusement_park: AmusementPark.find(5)
+)
+Ride.create!(
+  name: "Oscar's Wacky Taxi",
+  amusement_park: AmusementPark.find(5)
+)
+Ride.create!(
+  name: "Blast Off",
+  amusement_park: AmusementPark.find(5)
+)
+
+
+
+RideFeature.create!(
+  name: "Water"
+)
+RideFeature.create!(
+  name: "Wooden"
+)
+RideFeature.create!(
+  name: "Indoor"
+)
+RideFeature.create!(
+  name: "Inverted"
+)
+RideFeature.create!(
+  name: "Carnival"
+)
+RideFeature.create!(
+  name: "Steel"
+)
+RideFeature.create!(
+  name: "Flying"
+)
+RideFeature.create!(
+  name: "Virtual Reality"
+)
+RideFeature.create!(
+  name: "Floorless"
+)
+RideFeature.create!(
+  name: "Drop Tower"
+)
+
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Steel"),
+  ride: Ride.find_by(name: "Superman the Ride")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Virtual Reality"),
+  ride: Ride.find_by(name: "Superman the Ride")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Floorless"),
+  ride: Ride.find_by(name: "Batman the Dark Knight")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Steel"),
+  ride: Ride.find_by(name: "Batman the Dark Knight")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Steel"),
+  ride: Ride.find_by(name: "Goliath")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Inverted"),
+  ride: Ride.find_by(name: "Goliath")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Wooden"),
+  ride: Ride.find_by(name: "Yankee Cannonball")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Drop Tower"),
+  ride: Ride.find_by(name: "Starblaster")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Water"),
+  ride: Ride.find_by(name: "Boston Tea Party")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Steel"),
+  ride: Ride.find_by(name: "Great Bear")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Inverted"),
+  ride: Ride.find_by(name: "Great Bear")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Floorless"),
+  ride: Ride.find_by(name: "Great Bear")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Wooden"),
+  ride: Ride.find_by(name: "Lightning Racer")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Steel"),
+  ride: Ride.find_by(name: "Skyrush")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Drop Tower"),
+  ride: Ride.find_by(name: "Zumanjaro: Drop of Doom")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Indoor"),
+  ride: Ride.find_by(name: "Dark Knight Coaster")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Steel"),
+  ride: Ride.find_by(name: "Dark Knight Coaster")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Steel"),
+  ride: Ride.find_by(name: "Superman: Ultimate Flight")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Flying"),
+  ride: Ride.find_by(name: "Superman: Ultimate Flight")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Wooden"),
+  ride: Ride.find_by(name: "El Toro")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Water"),
+  ride: Ride.find_by(name: "Sky Splash")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Water"),
+  ride: Ride.find_by(name: "Slippery Slopes")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Drop Tower"),
+  ride: Ride.find_by(name: "Blast Off")
+)
+RideCatalogue.create!(
+  ride_feature: RideFeature.find_by(name: "Wooden"),
+  ride: Ride.find_by(name: "Oscar's Wacky Taxi")
+)
