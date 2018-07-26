@@ -5,14 +5,14 @@ class ReviewFormContainer extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      overall_rating: -1,
+      overall_rating: null,
       body: '',
-      food_rating: -1,
-      atmosphere_rating: -1,
-      shows_rating: -1,
-      staff_rating: -1,
-      price_rating: -1,
-      rides_rating: -1,
+      food_rating: null,
+      atmosphere_rating: null,
+      shows_rating: null,
+      staff_rating: null,
+      price_rating: null,
+      rides_rating: null,
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
@@ -25,25 +25,54 @@ class ReviewFormContainer extends React.Component {
     if (event.target.name == "overall_rating") {
       this.validateOverallRatingEntry(event.target.value)
     }
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   handleSubmit(event){
     event.preventDefault()
     let newReview = {
-
+      overall_rating: this.state.overall_rating,
+      amusement_park_id: this.props.id
     }
+
+    if (this.state.food_rating != null) {
+      newReview["food_rating"] = this.state.food_rating
+    }
+    if (this.state.atmosphere_rating != null) {
+      newReview["atmosphere_rating"] = this.state.atmosphere_rating
+    }
+    if (this.state.shows_rating != null) {
+      newReview["shows_rating"] = this.state.shows_rating
+    }
+    if (this.state.staff_rating != null) {
+      newReview["staff_rating"] = this.state.staff_rating
+    }
+    if (this.state.price_rating != null) {
+      newReview["price_rating"] = this.state.price_rating
+    }
+    if (this.state.rides_rating != null) {
+      newReview["rides_rating"] = this.state.rides_rating
+    }
+    if (this.state.body.trim() !== '') {
+      newReview["body"] = this.state.body
+    }
+
+    this.props.postReview(newReview)
+    this.handleClear()
   }
 
   handleClear(){
     this.setState({
-      overall_rating: -1,
+      overall_rating: null,
       body: '',
-      food_rating: -1,
-      atmosphere_rating: -1,
-      shows_rating: -1,
-      staff_rating: -1,
-      price_rating: -1
+      food_rating: null,
+      atmosphere_rating: null,
+      shows_rating: null,
+      staff_rating: null,
+      price_rating: null,
+      errors: {}
     })
   }
 
@@ -61,7 +90,6 @@ class ReviewFormContainer extends React.Component {
   }
 
   render(){
-    console.log(this.state.overall_rating)
     let errorDiv
     let errorItems
     if (Object.keys(this.state.errors).length > 0) {
@@ -80,7 +108,8 @@ class ReviewFormContainer extends React.Component {
           id="overall_rating"
           name="overall_rating"
           label="Overall Rating"
-          type="radio"
+          type="select"
+          checked={this.state.overallChecked}
         />
         <ReviewFormInput
           content={this.state.rides_rating}
@@ -88,7 +117,7 @@ class ReviewFormContainer extends React.Component {
           id="rides_rating"
           name="rides_rating"
           label="Rides"
-          type="radio"
+          type="select"
         />
         <ReviewFormInput
           content={this.state.food_rating}
@@ -96,7 +125,8 @@ class ReviewFormContainer extends React.Component {
           id="food_rating"
           name="food_rating"
           label="Food"
-          type="radio"
+          type="select"
+          checked={this.state.foodChecked}
         />
         <ReviewFormInput
           content={this.state.shows_rating}
@@ -104,7 +134,7 @@ class ReviewFormContainer extends React.Component {
           id="shows_rating"
           name="shows_rating"
           label="Shows"
-          type="radio"
+          type="select"
         />
         <ReviewFormInput
           content={this.state.atmosphere_rating}
@@ -112,7 +142,7 @@ class ReviewFormContainer extends React.Component {
           id="atmosphere_rating"
           name="atmosphere_rating"
           label="Atmosphere"
-          type="radio"
+          type="select"
         />
         <ReviewFormInput
           content={this.state.staff_rating}
@@ -120,7 +150,7 @@ class ReviewFormContainer extends React.Component {
           id="staff_rating"
           name="staff_rating"
           label="Staff"
-          type="radio"
+          type="select"
         />
         <ReviewFormInput
           content={this.state.price_rating}
@@ -128,7 +158,7 @@ class ReviewFormContainer extends React.Component {
           id="price_rating"
           name="price_rating"
           label="Price"
-          type="radio"
+          type="select"
         />
         <ReviewFormInput
           content={this.state.body}

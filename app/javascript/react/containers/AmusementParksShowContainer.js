@@ -11,6 +11,8 @@ class AmusementParksShowContainer extends React.Component {
       amusementPark: {},
       reviews: []
     };
+
+    this.addReview = this.addReview.bind(this)
   }
 
   componentDidMount(){
@@ -31,12 +33,43 @@ class AmusementParksShowContainer extends React.Component {
         reviews: body.reviews
       })
     })
-    .catch(error => console.error(`Error in park fetch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  addReview(payload){
+    fetch(`/api/v1/amusement_parks/${this.props.params.id}/reviews.json`, {
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json',
+      'X-Requested-With': 'XHMLttpRequest' },
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+      .then(response => {
+        if(response.ok){
+          return response
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage)
+          throw(error)
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        if(body.review != {}){
+          this.setState({ reviews: this.state.reviews.concat(body.review) })
+        }
+
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
     let park = this.state.amusementPark;
     let reviews = this.state.reviews;
+
+    let postReview = (payload) => {
+      this.addReview(payload)
+    }
 
     return(
       <div>
@@ -56,6 +89,7 @@ class AmusementParksShowContainer extends React.Component {
         />
         <ReviewFormContainer
           id={park.id}
+          postReview={postReview}
         />
       </div>
     )
