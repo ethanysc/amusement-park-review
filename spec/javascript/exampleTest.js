@@ -2,8 +2,6 @@ import AmusementParksShowContainer from '../../app/javascript/react/containers/A
 import ParkInfoTile from '../../app/javascript/react/components/ParkInfoTile';
 import fetchMock from 'fetch-mock';
 
-
-
 describe('Amusement Parks Show', () => {
   let wrapper;
   let park;

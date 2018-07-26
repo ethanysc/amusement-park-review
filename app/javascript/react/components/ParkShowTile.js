@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ParkInfoTile = props => {
+const ParkShowTile = props => {
   let description;
 
   return(
@@ -14,4 +14,4 @@ const ParkInfoTile = props => {
   )
 }
 
-export default ParkInfoTile
+export default ParkShowTile

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ParkInfoTile from '../components/ParkInfoTile'
+import ParkShowTile from '../components/ParkShowTile'
 import ReviewsContainer from './ReviewsContainer'
 import ReviewFormContainer from './ReviewFormContainer'
 
@@ -27,8 +27,8 @@ class AmusementParksShowContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        amusementPark: body.park,
-        reviews: body.reviews
+        amusementPark: body.amusement_park,
+        reviews: body.amusement_park.reviews
       })
     })
     .catch(error => console.error(`Error in park fetch: ${error.message}`));
@@ -40,7 +40,7 @@ class AmusementParksShowContainer extends React.Component {
 
     return(
       <div>
-        <ParkInfoTile
+        <ParkShowTile
           id={park.id}
           name={park.name}
           address={park.address}
@@ -54,7 +54,9 @@ class AmusementParksShowContainer extends React.Component {
         <ReviewsContainer
           reviews={reviews}
         />
-        <ReviewFormContainer />
+        <ReviewFormContainer
+          id={park.id}
+        />
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ParkTile = props => {
+const ParkIndexTile = props => {
 
   return(
     <div>
@@ -9,4 +9,4 @@ const ParkTile = props => {
   )
 }
 
-export default ParkTile
+export default ParkIndexTile

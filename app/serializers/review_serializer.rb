@@ -9,4 +9,7 @@ class ReviewSerializer < ActiveModel::Serializer
    :staff_rating,
    :price_rating,
    :created_at
+
+   belongs_to :amusement_park
+   belongs_to :user
 end
