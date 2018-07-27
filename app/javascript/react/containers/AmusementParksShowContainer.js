@@ -16,7 +16,7 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`/api/v1/amusement_parks/${this.props.params.id}`)
+    fetch(`/api/v1/amusement_parks/${this.props.params.id}.json`)
     .then(response => {
       if (response.ok) {
         return response;
