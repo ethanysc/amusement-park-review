@@ -20,9 +20,9 @@ describe('Amusement Parks Show', () => {
       operating_season: "April through late December"
     };
 
-    fetchMock.get(`/api/v1/amusement_parks/${park.id}`, {
+    fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
       status: 200,
-      body: {"amusement_park": park}
+      body: {"amusement_park": park, "reviews": []}
     })
     wrapper = mount(<AmusementParksShowContainer params={{id: '1'}}/>)
 
@@ -71,15 +71,5 @@ describe('Amusement Parks Show', () => {
 
       }, 0)
     })
-
-    it('render the review body', (done) => {
-      setTimeout(() => {
-        expect(wrapper.text()).toMatch('This place rocks!')
-        done()
-
-      }, 0)
-    })
-
-
   })
 });

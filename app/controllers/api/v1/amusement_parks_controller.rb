@@ -6,16 +6,6 @@ class Api::V1::AmusementParksController < ApiController
   end
 
   def show
-    # amusement_park = AmusementPark.find(params[:id])
-    # payload = {
-    #   park: amusement_park,
-    #   reviews: amusement_park.reviews
-    # }
-    # render json: payload
-
-    # render json: AmusementPark.find(params[:id])
-    # render json: AmusementPark.find(params[:id]).reviews
-    amusement_park = AmusementPark.find(params[:id])
     render json: {
       amusement_park: amusement_park,
       reviews: serialized_reviews,

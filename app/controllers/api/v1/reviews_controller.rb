@@ -6,10 +6,11 @@ class Api::V1::ReviewsController < ApiController
   def create
     new_review = Review.new(review_params)
     new_review.user = current_user
+
     if new_review.save
       render json: { review: new_review }
     else
-      render json: { review: {} }
+      render json: {errors: new_review.errors }
     end
   end
 

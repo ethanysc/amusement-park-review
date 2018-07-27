@@ -32,35 +32,38 @@ class ReviewFormContainer extends React.Component {
 
   handleSubmit(event){
     event.preventDefault()
-    let newReview = {
-      overall_rating: this.state.overall_rating,
-      amusement_park_id: this.props.id
-    }
 
-    if (this.state.food_rating != null) {
-      newReview["food_rating"] = this.state.food_rating
-    }
-    if (this.state.atmosphere_rating != null) {
-      newReview["atmosphere_rating"] = this.state.atmosphere_rating
-    }
-    if (this.state.shows_rating != null) {
-      newReview["shows_rating"] = this.state.shows_rating
-    }
-    if (this.state.staff_rating != null) {
-      newReview["staff_rating"] = this.state.staff_rating
-    }
-    if (this.state.price_rating != null) {
-      newReview["price_rating"] = this.state.price_rating
-    }
-    if (this.state.rides_rating != null) {
-      newReview["rides_rating"] = this.state.rides_rating
-    }
-    if (this.state.body.trim() !== '') {
-      newReview["body"] = this.state.body
-    }
+    if (this.validateOverallRatingEntry(this.state.overall_rating)){
+      let newReview = {
+        overall_rating: this.state.overall_rating,
+        amusement_park_id: this.props.id
+      }
 
-    this.props.postReview(newReview)
-    this.handleClear()
+      if (this.state.food_rating != null) {
+        newReview["food_rating"] = this.state.food_rating
+      }
+      if (this.state.atmosphere_rating != null) {
+        newReview["atmosphere_rating"] = this.state.atmosphere_rating
+      }
+      if (this.state.shows_rating != null) {
+        newReview["shows_rating"] = this.state.shows_rating
+      }
+      if (this.state.staff_rating != null) {
+        newReview["staff_rating"] = this.state.staff_rating
+      }
+      if (this.state.price_rating != null) {
+        newReview["price_rating"] = this.state.price_rating
+      }
+      if (this.state.rides_rating != null) {
+        newReview["rides_rating"] = this.state.rides_rating
+      }
+      if (this.state.body.trim() !== '') {
+        newReview["body"] = this.state.body
+      }
+
+      this.props.postReview(newReview)
+      this.handleClear()
+    }
   }
 
   handleClear(){
@@ -70,6 +73,7 @@ class ReviewFormContainer extends React.Component {
       food_rating: null,
       atmosphere_rating: null,
       shows_rating: null,
+      rides_rating: null,
       staff_rating: null,
       price_rating: null,
       errors: {}
@@ -77,7 +81,8 @@ class ReviewFormContainer extends React.Component {
   }
 
   validateOverallRatingEntry(entry) {
-    if (entry.trim() === '') {
+
+    if (!entry) {
       let newError = { overallRating: 'You must make an overall rating'}
       this.setState({ errors: Object.assign(this.state.errors, newError) })
       return false
@@ -98,6 +103,7 @@ class ReviewFormContainer extends React.Component {
       })
       errorDiv = <div className="callout alert">{errorItems}</div>
     }
+
     return(
       <form className="callout" onSubmit={this.handleSubmit}>
         <h1>New Review</h1>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         resources :reviews, only: [:create, :update]
         resources :rides, only: [:show]
       end
+      resources :reviews, only: [:create]
     end
   end
 

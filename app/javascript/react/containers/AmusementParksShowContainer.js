@@ -58,10 +58,9 @@ class AmusementParksShowContainer extends React.Component {
       })
       .then(response => response.json())
       .then(body => {
-        if(body.review != {}){
+        if(body.review){
           this.setState({ reviews: this.state.reviews.concat(body.review) })
         }
-
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
