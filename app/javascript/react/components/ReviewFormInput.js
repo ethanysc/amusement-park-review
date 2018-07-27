@@ -4,7 +4,8 @@ const ReviewFormInput = props => {
   let inputDiv;
   if(props.type == "select") {
     inputDiv = <div>
-      <select name={props.name} value={props.content} onChange={props.handlerFunction}>
+      <select name={props.name} value={props.content || ''} onChange={props.handlerFunction}>
+        <option value='default'>-</option>
         <option value='5'>5</option>
         <option value='4'>4</option>
         <option value='3'>3</option>
