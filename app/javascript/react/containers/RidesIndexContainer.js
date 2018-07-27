@@ -3,7 +3,7 @@ import React from 'react';
 
 import RideTile from '../components/RideTile'
 
-class RidesContainer extends React.Component {
+class RidesIndexContainer extends React.Component {
   constructor(props){
     super(props)
   }
@@ -27,4 +27,4 @@ class RidesContainer extends React.Component {
   }
 }
 
-export default RidesContainer;
+export default RidesIndexContainer;

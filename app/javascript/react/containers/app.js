@@ -11,6 +11,7 @@ export const App = (props) => {
         <IndexRoute component={AmusementParksIndexContainer} />
         <Route path='/amusement_parks' component={AmusementParksIndexContainer} />
         <Route path='/amusement_parks/:id' component={AmusementParksShowContainer} />
+        <Route path='/amusement_parks/:amusement_park_id/reviews/:id' component={RidesShowContainer} />
       </Route>
     </Router>
   )
