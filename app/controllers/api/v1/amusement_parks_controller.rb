@@ -7,7 +7,7 @@ class Api::V1::AmusementParksController < ApiController
 
   def show
     render json: {
-      amusement_park: amusement_park,
+      amusement_park: AmusementPark.find(params[:id]),
       reviews: serialized_reviews,
       rides: serialized_rides
     }
