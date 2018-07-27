@@ -9,7 +9,8 @@ class AmusementParksShowContainer extends React.Component {
     super(props);
     this.state = {
       amusementPark: {},
-      reviews: []
+      reviews: [],
+      rides: []
     };
 
     this.addReview = this.addReview.bind(this)
@@ -30,7 +31,8 @@ class AmusementParksShowContainer extends React.Component {
     .then(body => {
       this.setState({
         amusementPark: body.amusement_park,
-        reviews: body.reviews
+        reviews: body.reviews,
+        rides: body.rides
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -66,6 +68,7 @@ class AmusementParksShowContainer extends React.Component {
   render(){
     let park = this.state.amusementPark;
     let reviews = this.state.reviews;
+    let rides = this.state.rides;
 
     let postReview = (payload) => {
       this.addReview(payload)
@@ -90,6 +93,10 @@ class AmusementParksShowContainer extends React.Component {
         <ReviewFormContainer
           id={park.id}
           postReview={postReview}
+        />
+        <RidesContainer
+          id={park.id}
+          rides={rides}
         />
       </div>
     )
