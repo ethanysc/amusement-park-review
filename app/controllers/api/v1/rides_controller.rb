@@ -11,6 +11,7 @@ class Api::V1::RidesController < ApiController
 
     # render json: AmusementPark.find(params[:id])
     # render json: AmusementPark.find(params[:id]).reviews
+    
     render json: {
       amusement_park_id: AmusementPark.find(params[:amusement_park_id]).id,
       ride: Ride.find(params[:id]),

@@ -10,11 +10,13 @@ class RidesIndexContainer extends React.Component {
 
 
   render(){
+
     let rides = this.props.rides.map((ride) => {
       return(
         <RideTile
           key={ride.id}
           id={ride.id}
+          parkId={this.props.parkId}
           name={ride.name}
         />
       )
