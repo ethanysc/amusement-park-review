@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ReviewTile from '../components/ReviewTile'
 
 class ReviewsContainer extends React.Component {
@@ -9,8 +8,8 @@ class ReviewsContainer extends React.Component {
 
 
   render(){
-    debugger
     let reviews = this.props.reviews.map((review) => {
+      
       return(
         <ReviewTile
           key={review.id}

@@ -6,7 +6,7 @@ const ReviewTile = (props) => {
   let createdDate = props.review.created_at
 
   return(
-    <div key={props.id}>
+    <div>
       {reviewBody}
       {reviewOverallRating}
       {createdDate}
