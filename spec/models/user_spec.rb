@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    let!(:user1) {FactoryBot.build(:user)}
+
+    it "is valid with all required fields filled in" do
+      expect(user1).to be_valid
+    end
+  end
 end

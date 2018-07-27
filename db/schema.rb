@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_130809) do
+ActiveRecord::Schema.define(version: 2018_07_26_144658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,36 @@ ActiveRecord::Schema.define(version: 2018_07_25_130809) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "ride_catalogues", force: :cascade do |t|
+    t.bigint "ride_id", null: false
+    t.bigint "ride_feature_id", null: false
+    t.index ["ride_feature_id"], name: "index_ride_catalogues_on_ride_feature_id"
+    t.index ["ride_id"], name: "index_ride_catalogues_on_ride_id"
+  end
+
+  create_table "ride_features", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  create_table "ride_reviews", force: :cascade do |t|
+    t.integer "rating", null: false
+    t.text "body"
+    t.bigint "ride_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ride_id"], name: "index_ride_reviews_on_ride_id"
+    t.index ["user_id"], name: "index_ride_reviews_on_user_id"
+  end
+
+  create_table "rides", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "amusement_park_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amusement_park_id"], name: "index_rides_on_amusement_park_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,7 +91,6 @@ ActiveRecord::Schema.define(version: 2018_07_25_130809) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
-    t.string "profile_photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
