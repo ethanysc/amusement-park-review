@@ -3,6 +3,7 @@ import React from 'react';
 import ParkShowTile from '../components/ParkShowTile'
 import ReviewsContainer from './ReviewsContainer'
 import ReviewFormContainer from './ReviewFormContainer'
+import RidesContainer from './RidesContainer'
 
 class AmusementParksShowContainer extends React.Component {
   constructor(props){
