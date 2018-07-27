@@ -9,6 +9,8 @@ class Api::V1::ReviewsController < ApiController
 
     if new_review.save
       render json: { review: new_review }
+    else
+      render json: {errors: new_review.errors }
     end
   end
 

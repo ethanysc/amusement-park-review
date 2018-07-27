@@ -41,4 +41,5 @@ RSpec.describe Api::V1::AmusementParksController, type: :controller do
       expect(returned_json["amusement_park"]["city"]).to eq park.city
     end
   end
+
 end
