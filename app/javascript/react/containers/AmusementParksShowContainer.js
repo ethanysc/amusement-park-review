@@ -66,13 +66,12 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   render(){
-    let park = this.state.amusementPark;
-    let reviews = this.state.reviews;
-    let rides = this.state.rides;
+    let { amusementPark, reviews, rides } = this.state
 
     let postReview = (payload) => {
       this.addReview(payload)
     }
+
     return(
       <div>
         <ParkShowTile
@@ -94,7 +93,7 @@ class AmusementParksShowContainer extends React.Component {
           postReview={postReview}
         />
         <RidesIndexContainer
-          parkId={park.id}
+          parkId={amusementPark.id}
           rides={rides}
         />
       </div>
