@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :username, uniqueness: true
 
+  mount_uploader :profile_photo, ProfilePhotoUploader
   has_many :reviews
   has_many :ride_reviews
   has_many :rides, through: :ride_reviews 
@@ -13,6 +14,10 @@ class User < ApplicationRecord
          :authentication_keys => [:username]
 
   def will_save_change_to_email?
+    false
+  end
+
+  def will_save_change_to_profile_photo?
     false
   end
 end
