@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :amusement_parks, only: [:index, :show] do
         resources :reviews, only: [:create, :update]
-        resources :rides, only: [:show]
+        resources :rides, only: [:show] do
+          resources :ride_reviews, only: [:create]
+        end
       end
       resources :reviews, only: [:create]
     end

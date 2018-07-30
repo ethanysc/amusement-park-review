@@ -8,7 +8,10 @@ class ReviewSerializer < ActiveModel::Serializer
    :shows_rating,
    :staff_rating,
    :price_rating,
-   :created_at
+   :created_at,
+   :user
 
-   belongs_to :user
+   def user
+     UserSerializer.new(object.user)
+   end
 end

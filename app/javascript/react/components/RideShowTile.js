@@ -6,7 +6,7 @@ const RideShowTile = props => {
   if(props.features.length != 0){
     features = props.features.map((feature) => {
       return(
-        <div>{feature.name}</div>
+        <div key={feature.id}>{feature.name}</div>
       )
     })
   }

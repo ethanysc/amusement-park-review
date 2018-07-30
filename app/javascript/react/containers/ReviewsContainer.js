@@ -9,7 +9,6 @@ class ReviewsContainer extends React.Component {
 
   render(){
     let reviews = this.props.reviews.map((review) => {
-      
       return(
         <ReviewTile
           key={review.id}
