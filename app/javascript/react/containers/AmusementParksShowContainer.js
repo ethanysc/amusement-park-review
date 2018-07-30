@@ -63,8 +63,7 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   render(){
-    let park = this.state.amusementPark;
-    let reviews = this.state.reviews;
+    let { amusementPark, reviews } = this.state
 
     let postReview = (payload) => {
       this.addReview(payload)
@@ -73,21 +72,21 @@ class AmusementParksShowContainer extends React.Component {
     return(
       <div>
         <ParkShowTile
-          id={park.id}
-          name={park.name}
-          address={park.address}
-          city={park.city}
-          state={park.state}
-          zipcode={park.zipcode}
-          phone_number={park.phone_number}
-          operating_season={park.operating_season}
-          website={park.website}
+          id={amusementPark.id}
+          name={amusementPark.name}
+          address={amusementPark.address}
+          city={amusementPark.city}
+          state={amusementPark.state}
+          zipcode={amusementPark.zipcode}
+          phone_number={amusementPark.phone_number}
+          operating_season={amusementPark.operating_season}
+          website={amusementPark.website}
         />
         <ReviewsContainer
           reviews={reviews}
         />
         <ReviewFormContainer
-          id={park.id}
+          id={amusementPark.id}
           postReview={postReview}
         />
       </div>
