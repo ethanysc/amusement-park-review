@@ -1,17 +1,6 @@
 class Api::V1::RidesController < ApiController
-  protect_from_forgery unless: -> {request.format.json?}
 
-    def show
-    # amusement_park = AmusementPark.find(params[:id])
-    # payload = {
-    #   park: amusement_park,
-    #   reviews: amusement_park.reviews
-    # }
-    # render json: payload
-
-    # render json: AmusementPark.find(params[:id])
-    # render json: AmusementPark.find(params[:id]).reviews
-
+  def show
     render json: {
       amusement_park_id: AmusementPark.find(params[:amusement_park_id]).id,
       ride: Ride.find(params[:id]),
