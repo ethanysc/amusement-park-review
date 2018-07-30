@@ -5,6 +5,7 @@ import fetchMock from 'fetch-mock';
 describe('Amusement Parks Show', () => {
   let wrapper;
   let park;
+  let ride;
 
   beforeEach(() => {
     jasmineEnzyme();
@@ -43,7 +44,7 @@ describe('Amusement Parks Show', () => {
 
     it('render the parks name', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Six Flags New England')
+        expect(wrapper.text()).toMatch(park.name)
         done()
 
       }, 0)
@@ -51,7 +52,7 @@ describe('Amusement Parks Show', () => {
 
     it('render the parks address', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('1623 Main St.')
+        expect(wrapper.text()).toMatch(park.address)
         done()
 
       }, 0)
@@ -59,7 +60,7 @@ describe('Amusement Parks Show', () => {
 
     it('render the parks state', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Massachusetts')
+        expect(wrapper.text()).toMatch(park.state)
         done()
 
       }, 0)
@@ -67,7 +68,7 @@ describe('Amusement Parks Show', () => {
 
     it('render the parks city', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Massachusetts')
+        expect(wrapper.text()).toMatch(park.city)
         done()
 
       }, 0)
@@ -75,18 +76,19 @@ describe('Amusement Parks Show', () => {
 
     it('render the parks zipcode', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('01001')
+        expect(wrapper.text()).toMatch(park.zipcode)
         done()
 
       }, 0)
     })
 
-    it('render the parks rides', (done) => {
+    it('render the park rides', (done) => {
       setTimeout(() => {
         expect(wrapper.text()).toMatch(ride[0].name)
         done()
 
       }, 0)
     })
+
   })
 });
