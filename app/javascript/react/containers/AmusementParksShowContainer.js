@@ -66,13 +66,9 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   render(){
-<<<<<<< HEAD
     let park = this.state.amusementPark;
     let reviews = this.state.reviews;
     let rides = this.state.rides;
-=======
-    let { amusementPark, reviews } = this.state
->>>>>>> 4f5755fd906dc8bbd605f87be39fc9d089e0cb2c
 
     let postReview = (payload) => {
       this.addReview(payload)
