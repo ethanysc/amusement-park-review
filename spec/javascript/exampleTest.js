@@ -10,11 +10,8 @@ describe('Amusement Parks Show', () => {
   let wrapper;
   let park;
   let ride;
-<<<<<<< HEAD
-=======
 
   let postReview;
->>>>>>> 7e41a690eecebf6ab322830deebff9029ce6af0d
 
   beforeEach(() => {
     jasmineEnzyme();
@@ -35,12 +32,8 @@ describe('Amusement Parks Show', () => {
       name: 'Superman the Ride'
     }]
 
-<<<<<<< HEAD
-    fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
-=======
     // fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
     fetchMock.get(`/api/v1/amusement_parks/1.json`, {
->>>>>>> 7e41a690eecebf6ab322830deebff9029ce6af0d
       status: 200,
       body: {
         "amusement_park": park,
@@ -66,9 +59,6 @@ describe('Amusement Parks Show', () => {
 
     fit('ParkShowTile is present and receiving the correct props', (done) => {
       setTimeout(() => {
-<<<<<<< HEAD
-        expect(wrapper.text()).toMatch(park.name)
-=======
 
         expect(wrapper.find(ParkShowTile)).toBePresent();
 
@@ -83,7 +73,6 @@ describe('Amusement Parks Show', () => {
           operating_season: 'April through late December',
           website: 'https://www.sixflags.com/newengland'
         });
->>>>>>> 7e41a690eecebf6ab322830deebff9029ce6af0d
         done()
 
       }, 0)
@@ -91,23 +80,12 @@ describe('Amusement Parks Show', () => {
 
     fit('ReviewsContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
-<<<<<<< HEAD
-        expect(wrapper.text()).toMatch(park.address)
-        done()
-=======
->>>>>>> 7e41a690eecebf6ab322830deebff9029ce6af0d
 
         expect(wrapper.find(ReviewsContainer)).toBePresent();
 
-<<<<<<< HEAD
-    it('render the parks state', (done) => {
-      setTimeout(() => {
-        expect(wrapper.text()).toMatch(park.state)
-=======
         expect(wrapper.find(ReviewsContainer).props()).toEqual({
           reviews: []
         });
->>>>>>> 7e41a690eecebf6ab322830deebff9029ce6af0d
         done()
 
       }, 0)
@@ -115,13 +93,9 @@ describe('Amusement Parks Show', () => {
 
     fit('ReviewFormContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
-<<<<<<< HEAD
-        expect(wrapper.text()).toMatch(park.city)
-=======
 
         expect(wrapper.find(ReviewFormContainer)).toBePresent();
 
->>>>>>> 7e41a690eecebf6ab322830deebff9029ce6af0d
         done()
 
       }, 0)
@@ -129,9 +103,6 @@ describe('Amusement Parks Show', () => {
 
     fit('RidesIndexContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
-<<<<<<< HEAD
-        expect(wrapper.text()).toMatch(park.zipcode)
-=======
 
         expect(wrapper.find(RidesIndexContainer)).toBePresent();
 
@@ -139,7 +110,6 @@ describe('Amusement Parks Show', () => {
           parkId: '1',
           rides: ride
         });
->>>>>>> 7e41a690eecebf6ab322830deebff9029ce6af0d
         done()
 
       }, 0)
