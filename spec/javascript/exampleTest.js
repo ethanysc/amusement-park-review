@@ -2,9 +2,7 @@ import AmusementParksShowContainer from '../../app/javascript/react/containers/A
 import ParkInfoTile from '../../app/javascript/react/components/ParkInfoTile';
 import fetchMock from 'fetch-mock';
 
-
-
-describe('Amusement Parks Index', () => {
+describe('Amusement Parks Show', () => {
   let wrapper;
   let park;
 
@@ -21,10 +19,10 @@ describe('Amusement Parks Index', () => {
       website: "https://www.sixflags.com/newengland",
       operating_season: "April through late December"
     };
-    
-    fetchMock.get(`/api/v1/amusement_parks/${park.id}`, {
+
+    fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
       status: 200,
-      body: {"amusement_park": park}
+      body: {"amusement_park": park, "reviews": []}
     })
     wrapper = mount(<AmusementParksShowContainer params={{id: '1'}}/>)
 
@@ -73,7 +71,5 @@ describe('Amusement Parks Index', () => {
 
       }, 0)
     })
-
-
   })
 });

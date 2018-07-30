@@ -1,5 +1,6 @@
 import React from 'react'
-import ParkTile from '../components/ParkTile'
+
+import ParkIndexTile from '../components/ParkIndexTile'
 
 class AmusementParksIndexContainer extends React.Component {
   constructor(props){
@@ -15,8 +16,8 @@ class AmusementParksIndexContainer extends React.Component {
       if (response.ok) {
         return response
       } else {
-        let errrorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errrorMessage)
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
         throw(error)
       }
     })
@@ -32,7 +33,7 @@ class AmusementParksIndexContainer extends React.Component {
   render(){
     let amusementParks = this.state.amusementParks.map((park) => {
       return(
-        <ParkTile
+        <ParkIndexTile
           id={park.id}
           key={park.id}
           name={park.name}

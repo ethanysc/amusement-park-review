@@ -252,3 +252,32 @@ RideCatalogue.create!(
   ride_feature: RideFeature.find_by(name: "Wooden"),
   ride: Ride.find_by(name: "Oscar's Wacky Taxi")
 )
+
+
+user1 = FactoryBot.create(:user)
+user2 = FactoryBot.create(
+  :user,
+  email: 'ravikc@gmail.com',
+  password: 'apple1234',
+  username: 'ravikc',
+  password_confirmation: "apple1234"
+)
+
+FactoryBot.create(
+  :review,
+  user: user2,
+  amusement_park: AmusementPark.first
+)
+FactoryBot.create(
+  :review,
+  overall_rating: 2,
+  body: 'Worst park Ive ever been to',
+  rides_rating: 2,
+  food_rating: 3,
+  atmosphere_rating: 2,
+  shows_rating: 1,
+  staff_rating: 4,
+  price_rating: 0,
+  user: user1,
+  amusement_park: AmusementPark.first
+)
