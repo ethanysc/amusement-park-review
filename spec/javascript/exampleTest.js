@@ -20,9 +20,18 @@ describe('Amusement Parks Show', () => {
       operating_season: "April through late December"
     };
 
+    ride = [{
+      id: '1',
+      name: 'Superman the Ride'
+    }]
+
     fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
       status: 200,
-      body: {"amusement_park": park, "reviews": []}
+      body: {
+        "amusement_park": park,
+        "reviews": [],
+        "rides": ride
+      }
     })
     wrapper = mount(<AmusementParksShowContainer params={{id: '1'}}/>)
 
@@ -67,6 +76,14 @@ describe('Amusement Parks Show', () => {
     it('render the parks zipcode', (done) => {
       setTimeout(() => {
         expect(wrapper.text()).toMatch('01001')
+        done()
+
+      }, 0)
+    })
+
+    it('render the parks rides', (done) => {
+      setTimeout(() => {
+        expect(wrapper.text()).toMatch(ride[0].name)
         done()
 
       }, 0)
