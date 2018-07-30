@@ -36,29 +36,14 @@ class ReviewFormContainer extends React.Component {
     if (this.validateOverallRatingEntry(this.state.overall_rating)){
       let newReview = {
         overall_rating: this.state.overall_rating,
-        amusement_park_id: this.props.id
-      }
-
-      if (this.state.food_rating != null) {
-        newReview["food_rating"] = this.state.food_rating
-      }
-      if (this.state.atmosphere_rating != null) {
-        newReview["atmosphere_rating"] = this.state.atmosphere_rating
-      }
-      if (this.state.shows_rating != null) {
-        newReview["shows_rating"] = this.state.shows_rating
-      }
-      if (this.state.staff_rating != null) {
-        newReview["staff_rating"] = this.state.staff_rating
-      }
-      if (this.state.price_rating != null) {
-        newReview["price_rating"] = this.state.price_rating
-      }
-      if (this.state.rides_rating != null) {
-        newReview["rides_rating"] = this.state.rides_rating
-      }
-      if (this.state.body.trim() !== '') {
-        newReview["body"] = this.state.body
+        amusement_park_id: this.props.id,
+        food_rating: this.state.food_rating,
+        atmosphere_rating: this.state.atmosphere_rating,
+        shows_rating: this.state.shows_rating,
+        staff_rating: this.state.staff_rating,
+        price_rating: this.state.price_rating,
+        rides_rating: this.state.rides_rating,
+        body: this.state.body
       }
 
       this.props.postReview(newReview)

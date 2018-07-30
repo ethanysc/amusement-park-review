@@ -252,13 +252,11 @@ RideCatalogue.create!(
   ride_feature: RideFeature.find_by(name: "Wooden"),
   ride: Ride.find_by(name: "Oscar's Wacky Taxi")
 )
-user1 = User.create!(
-  username: "user",
-  email: "something@somthing.com",
-  password: "password",
-  password_confirmation: "password"
-)
-user2 = User.create!(
+
+
+user1 = FactoryBot.create(:user)
+user2 = FactoryBot.create(
+  :user,
   email: 'ravikc@gmail.com',
   password: 'apple1234',
   username: 'ravikc',
