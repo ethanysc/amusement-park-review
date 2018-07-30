@@ -58,7 +58,7 @@ describe('Amusement Parks Show', () => {
 
     it('render the parks city', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Massachusetts')
+        expect(wrapper.text()).toMatch('Agawam')
         done()
 
       }, 0)
