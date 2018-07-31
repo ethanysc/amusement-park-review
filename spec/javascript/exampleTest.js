@@ -84,7 +84,7 @@ describe('Amusement Parks Show', () => {
         expect(wrapper.find(ReviewsContainer)).toBePresent();
 
         expect(wrapper.find(ReviewsContainer).props()).toEqual({
-          reviews: []
+          reviews: [], parkId: '1'
         });
         done()
 
