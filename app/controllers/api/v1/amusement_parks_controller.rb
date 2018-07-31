@@ -8,7 +8,6 @@ class Api::V1::AmusementParksController < ApiController
     current_user_id = current_user.id if current_user
     render json: {
       amusement_park: AmusementPark.find(params[:id]),
-<<<<<<< HEAD
       reviews: serialized_review,
       current_user_id: current_user_id
     }
@@ -61,14 +60,6 @@ class Api::V1::AmusementParksController < ApiController
   end
 
   def serialized_review
-=======
-      reviews: serialized_reviews,
-      rides: serialized_rides
-    }
-  end
-
-  def serialized_reviews
->>>>>>> 14353a07c3d6f7568904c9748745cf1f47c4c52d
     ActiveModel::Serializer::ArraySerializer.new(AmusementPark.find(params[:id]).reviews, each_serializer: ReviewSerializer)
   end
 
