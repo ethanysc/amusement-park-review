@@ -22,7 +22,7 @@ describe('Amusement Parks Show', () => {
 
     fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
       status: 200,
-      body: {"amusement_park": park, "reviews": []}
+      body: {"amusement_park": park, "reviews": [], "rides": []}
     })
     wrapper = mount(<AmusementParksShowContainer params={{id: '1'}}/>)
 
