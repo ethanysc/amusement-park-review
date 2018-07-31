@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ParkShowTile = props => {
-  let description;
 
   return(
     <div>

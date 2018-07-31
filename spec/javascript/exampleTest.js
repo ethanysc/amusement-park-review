@@ -1,10 +1,17 @@
 import AmusementParksShowContainer from '../../app/javascript/react/containers/AmusementParksShowContainer';
 import ParkInfoTile from '../../app/javascript/react/components/ParkInfoTile';
+import ParkShowTile from '../../app/javascript/react/components/ParkShowTile';
+import ReviewsContainer from '../../app/javascript/react/containers/ReviewsContainer'
+import ReviewFormContainer from '../../app/javascript/react/containers/ReviewFormContainer'
+import RidesIndexContainer from '../../app/javascript/react/containers/RidesIndexContainer'
 import fetchMock from 'fetch-mock';
 
 describe('Amusement Parks Show', () => {
   let wrapper;
   let park;
+  let ride;
+
+  let postReview;
 
   beforeEach(() => {
     jasmineEnzyme();
@@ -20,53 +27,89 @@ describe('Amusement Parks Show', () => {
       operating_season: "April through late December"
     };
 
-    fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
+    ride = [{
+      id: '1',
+      name: 'Superman the Ride'
+    }]
+
+    // fetchMock.get(`/api/v1/amusement_parks/${park.id}.json`, {
+    fetchMock.get(`/api/v1/amusement_parks/1.json`, {
       status: 200,
-      body: {"amusement_park": park, "reviews": []}
+      body: {
+        "amusement_park": park,
+        "reviews": [],
+        "rides": ride
+      }
     })
-    wrapper = mount(<AmusementParksShowContainer params={{id: '1'}}/>)
+
+    wrapper = mount(<AmusementParksShowContainer params={{id: '1'}} />)
+
 
   });
 
   afterEach(fetchMock.restore);
 
+  // make a test to assert the initial state is as expect
+
   describe('AmusementParksShowContainer', () => {
 
-    it('render the parks name', (done) => {
+    // make assertion that a tile is present
+    // make assertion that the tile is receiving the right props
+    // rinse and repeat for each tile
+
+    it('ParkShowTile is present and receiving the correct props', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Six Flags New England')
+
+        expect(wrapper.find(ParkShowTile)).toBePresent();
+
+        expect(wrapper.find(ParkShowTile).props()).toEqual({
+          id: '1',
+          name: "Six Flags New England",
+          address: "1623 Main St.",
+          city: "Agawam",
+          state: "Massachusetts",
+          zipcode: "01001",
+          phone_number: '(413) 786-9300',
+          operating_season: 'April through late December',
+          website: 'https://www.sixflags.com/newengland'
+        });
         done()
 
       }, 0)
     })
 
-    it('render the parks address', (done) => {
+    it('ReviewsContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('1623 Main St.')
+
+        expect(wrapper.find(ReviewsContainer)).toBePresent();
+
+        expect(wrapper.find(ReviewsContainer).props()).toEqual({
+          reviews: []
+        });
         done()
 
       }, 0)
     })
 
-    it('render the parks state', (done) => {
+    it('ReviewFormContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Massachusetts')
+
+        expect(wrapper.find(ReviewFormContainer)).toBePresent();
+
         done()
 
       }, 0)
     })
 
-    it('render the parks city', (done) => {
+    it('RidesIndexContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Massachusetts')
-        done()
 
-      }, 0)
-    })
+        expect(wrapper.find(RidesIndexContainer)).toBePresent();
 
-    it('render the parks zipcode', (done) => {
-      setTimeout(() => {
-        expect(wrapper.text()).toMatch('01001')
+        expect(wrapper.find(RidesIndexContainer).props()).toEqual({
+          parkId: '1',
+          rides: ride
+        });
         done()
 
       }, 0)

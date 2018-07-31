@@ -11,4 +11,5 @@ class AmusementParkSerializer < ActiveModel::Serializer
    :description
 
    has_many :reviews
+   has_many :rides
 end
