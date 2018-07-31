@@ -73,10 +73,11 @@ class ReviewTileContainer extends React.Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         userId: body.userVote.user_id,
-        reviewId: body.userVote.review_id
+        reviewId: body.userVote.review_id,
+        likes: body.likes,
+        dislikes: body.dislikes
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));

@@ -25,7 +25,7 @@ class Api::V1::ReviewsController < ApiController
         dislikes += 1
       end
     end
-
+    
     if current_user
       user_vote = UserVote.where(review_id: params[:id], user: current_user)
 
