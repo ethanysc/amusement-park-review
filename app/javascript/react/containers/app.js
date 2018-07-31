@@ -4,6 +4,7 @@ import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import AmusementParksIndexContainer from './AmusementParksIndexContainer'
 import AmusementParksShowContainer from './AmusementParksShowContainer'
 import AmusementParksFormContainer from './AmusementParksFormContainer'
+import AmusementParksEditContainer from './AmusementParksEditContainer'
 
 
 export const App = (props) => {
@@ -14,6 +15,7 @@ export const App = (props) => {
         <Route path='/amusement_parks' component={AmusementParksIndexContainer} />
         <Route path='/amusement_parks/new' component={AmusementParksFormContainer} />
         <Route path='/amusement_parks/:id' component={AmusementParksShowContainer} />
+        <Route path='/amusement_parks/:id/edit' component={AmusementParksEditContainer} />
       </Route>
     </Router>
   )

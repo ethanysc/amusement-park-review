@@ -5,9 +5,11 @@ class Api::V1::AmusementParksController < ApiController
   end
 
   def show
+    current_user_id = current_user.id if current_user
     render json: {
       amusement_park: AmusementPark.find(params[:id]),
-      reviews: serialized_review
+      reviews: serialized_review,
+      current_user_id: current_user_id
     }
   end
 
@@ -25,12 +27,26 @@ class Api::V1::AmusementParksController < ApiController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    edited_amusement_park = AmusementPark.find(params[:id])
+      if edited_amusement_park.update(amusement_park_params)
+        render json: { amusement_park: edited_amusement_park }
+      else
+        render json: {errors: edited_amusement_park.errors}
+      end
+  end
+
   private
 
   def amusement_park_params
     params
       .require(:amusement_park)
       .permit(
+        :id,
         :name,
         :address,
         :city,

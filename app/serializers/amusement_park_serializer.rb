@@ -8,7 +8,8 @@ class AmusementParkSerializer < ActiveModel::Serializer
    :phone_number,
    :website,
    :operating_season,
-   :description
+   :description,
+   :user_id
 
    has_many :reviews
 end

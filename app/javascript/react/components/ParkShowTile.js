@@ -1,7 +1,10 @@
 import React from 'react'
 
 const ParkShowTile = props => {
-  let description;
+  let descriptionDiv;
+  if (props.description != "" && props.description != null) {
+    descriptionDiv = <p>Description: {props.description}</p>
+  }
 
   return(
     <div>
@@ -10,6 +13,7 @@ const ParkShowTile = props => {
       <p>Phone Number: {props.phone_number}</p>
       <p>Operating Season: {props.operating_season}</p>
       <p>Website: <a href={props.website}>{props.website}</a></p>
+      {descriptionDiv}
     </div>
   )
 }
