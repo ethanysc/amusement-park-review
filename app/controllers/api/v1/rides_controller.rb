@@ -5,8 +5,8 @@ class Api::V1::RidesController < ApiController
       amusement_park_id: AmusementPark.find(params[:amusement_park_id]).id,
       ride: Ride.find(params[:id]),
       features: serialized_features,
-      ride_reviews: serialized_ride_reviews
-      }
+      ride_review: serialize_ride_reviews
+    }
   end
 
   def serialized_ride

@@ -57,7 +57,7 @@ describe('Amusement Parks Show', () => {
     // make assertion that the tile is receiving the right props
     // rinse and repeat for each tile
 
-    fit('ParkShowTile is present and receiving the correct props', (done) => {
+    it('ParkShowTile is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ParkShowTile)).toBePresent();
@@ -78,7 +78,7 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    fit('ReviewsContainer is present and receiving the correct props', (done) => {
+    it('ReviewsContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ReviewsContainer)).toBePresent();
@@ -91,7 +91,7 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    fit('ReviewFormContainer is present and receiving the correct props', (done) => {
+    it('ReviewFormContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ReviewFormContainer)).toBePresent();
@@ -101,7 +101,7 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    fit('RidesIndexContainer is present and receiving the correct props', (done) => {
+    it('RidesIndexContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(RidesIndexContainer)).toBePresent();

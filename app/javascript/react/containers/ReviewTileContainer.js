@@ -146,4 +146,4 @@ render(){
   }
 }
 
-export default ReviewTile
+export default ReviewTileContainer
