@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         end
       end
       resources :reviews, only: [:create]
-      resources :votes, only: [:create]
+      resources :votes, only: [:create, :update, :destroy]
     end
   end
 

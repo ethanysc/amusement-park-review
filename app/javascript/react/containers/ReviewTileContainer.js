@@ -1,6 +1,6 @@
 import React from 'react'
 
-class ReviewTile extends React.Component {
+class ReviewTileContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -74,8 +74,30 @@ class ReviewTile extends React.Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  editVote(){
-
+  editVote(payload){
+    fetch(`/api/v1/votes.json`, {
+      credentials: 'same-origin',
+      method: "PUT",
+      body: JSON.stringify(payload),
+      headers: { 'X-Requested-With': 'XHMLttpRequest', 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      if(response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        userId: body.userVote.user_id,
+        reviewId: body.userVote.review_id
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   destroyVote(){
@@ -83,7 +105,6 @@ class ReviewTile extends React.Component {
   }
 
   onClick(event){
-
     if (this.state.voteStatus == null){
       if(event.target.name == "like"){
         let payload = {
@@ -124,7 +145,7 @@ class ReviewTile extends React.Component {
     var monthIndex = date.getMonth();
     var year = date.getFullYear();
 
-    return MONTHS[monthIndex] + " " + day + ' ' + year;
+    return MONTHS[monthIndex] + ' ' + day + ' ' + year;
   }
 render(){
 
