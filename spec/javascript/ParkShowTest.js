@@ -114,5 +114,14 @@ describe('Amusement Parks Show', () => {
 
       }, 0)
     })
+
+    it('render the park rides', (done) => {
+      setTimeout(() => {
+        expect(wrapper.text()).toMatch(ride[0].name)
+        done()
+
+      }, 0)
+    })
+
   })
 });
