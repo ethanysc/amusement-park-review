@@ -1,10 +1,13 @@
 import React from 'react'
 
 const ParkShowTile = props => {
+<<<<<<< HEAD
   let descriptionDiv;
   if (props.description != "" && props.description != null) {
     descriptionDiv = <p>Description: {props.description}</p>
   }
+=======
+>>>>>>> 14353a07c3d6f7568904c9748745cf1f47c4c52d
 
   return(
     <div>
