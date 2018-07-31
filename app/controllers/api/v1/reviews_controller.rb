@@ -18,7 +18,6 @@ class Api::V1::ReviewsController < ApiController
     likes = 0
     dislikes = 0
     votes = UserVote.where(review_id: params[:id])
-
     votes.each do |vote|
       if vote.vote > 0
         likes += 1
@@ -27,11 +26,14 @@ class Api::V1::ReviewsController < ApiController
       end
     end
 
-    voteStatus = nil
-
     if current_user
-      vote_status = UserVote.where(review_id: params[:id], user: current_user)
-      render json: { likes: likes, dislikes: dislikes, voteStatus: vote_status[0] }
+      user_vote = UserVote.where(review_id: params[:id], user: current_user)
+
+      if !user_vote.empty?
+        render json: { likes: likes, dislikes: dislikes, voteStatus: user_vote[0] }
+      else
+        render json: { likes: likes, dislikes: dislikes }
+      end
     else
       render json: { likes: likes, dislikes: dislikes }
     end

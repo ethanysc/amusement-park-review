@@ -1,4 +1,5 @@
 import React from 'react'
+import VoteTile from '../components/VoteTile'
 
 class ReviewTileContainer extends React.Component {
   constructor(props){
@@ -19,7 +20,9 @@ class ReviewTileContainer extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`/api/v1/amusement_parks/${this.props.parkId}}/reviews/${this.props.review.id}`)
+    fetch(`/api/v1/amusement_parks/${this.props.parkId}}/reviews/${this.props.review.id}.json`, {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -32,16 +35,20 @@ class ReviewTileContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       let buttonStr = ''
-      if (body.voteStatus == 1){
+      let voteStatus = null
+
+      if (body.voteStatus && body.voteStatus.vote == 1){
         buttonStr = 'like'
+        voteStatus = body.voteStatus.vote
       }
-      else if (body.voteStatus == -1){
+      else if (body.voteStatus && body.voteStatus.vote == -1){
         buttonStr = 'dislike'
+        voteStatus = body.voteStatus.vote
       }
       this.setState({
         likes: body.likes,
         dislikes: body.dislikes,
-        voteStatus: body.voteStatus,
+        voteStatus: voteStatus,
         selectedButton: buttonStr
       })
     })
@@ -66,6 +73,7 @@ class ReviewTileContainer extends React.Component {
     })
     .then(response => response.json())
     .then(body => {
+      debugger
       this.setState({
         userId: body.userVote.user_id,
         reviewId: body.userVote.review_id
@@ -161,7 +169,12 @@ render(){
         Rating: {reviewOverallRating}<br/>
         Date Reviewed: {formattedDate}<br/>
         User: {username}<br/>
-      <button name="like" onClick={this.onClick} className={buttonClass}>Like</button> Likes: {this.state.likes} <button onClick={this.onClick} name="dislike" className={buttonClass}>Dislike</button> Dislikes: {this.state.dislikes}
+      <VoteTile
+        likes={this.state.likes}
+        dislikes={this.state.dislikes}
+        onClick={this.onClick}
+        buttonClass={buttonClass}
+      />
       </div>
     )
   }
