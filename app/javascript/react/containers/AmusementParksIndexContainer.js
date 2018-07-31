@@ -1,6 +1,8 @@
 import React from 'react'
 
 import ParkIndexTile from '../components/ParkIndexTile'
+import NewAmusementParkLink from '../components/NewAmusementParkLink'
+
 
 class AmusementParksIndexContainer extends React.Component {
   constructor(props){
@@ -46,6 +48,7 @@ class AmusementParksIndexContainer extends React.Component {
         <h1>Amusement Parks:</h1>
 
         {amusementParks}
+        <NewAmusementParkLink />
       </div>
     )
   }
