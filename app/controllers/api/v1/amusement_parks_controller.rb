@@ -9,6 +9,7 @@ class Api::V1::AmusementParksController < ApiController
     render json: {
       amusement_park: AmusementPark.find(params[:id]),
       reviews: serialized_review,
+      rides: serialized_rides,
       current_user_id: current_user_id
     }
   end

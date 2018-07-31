@@ -71,14 +71,13 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   render(){
-    let { amusementPark, reviews, currentUserId } = this.state
+    let { amusementPark, reviews, currentUserId, rides } = this.state
     let editAmusementParkLink
     if (currentUserId == amusementPark.user_id) {
       editAmusementParkLink = <EditAmusementParkLink
                                 id={amusementPark.id}
                               />
     }
-    let { amusementPark, reviews, rides } = this.state
     let postReview = (payload) => {
       this.addReview(payload)
     }
