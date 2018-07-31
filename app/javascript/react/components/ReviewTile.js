@@ -13,9 +13,9 @@ class ReviewTile extends React.Component {
     }
     this.formatDate = this.formatDate.bind(this)
     this.onClick = this.onClick.bind(this)
-    this.createVote - this.createVote.bind(this)
-    this.editVote - this.editVote.bind(this)
-    this.destroyVote - this.destroyVote.bind(this)
+    this.createVote = this.createVote.bind(this)
+    this.editVote = this.editVote.bind(this)
+    this.destroyVote = this.destroyVote.bind(this)
   }
 
   componentDidMount(){
@@ -53,7 +53,7 @@ class ReviewTile extends React.Component {
       credentials: 'same-origin',
       method: "POST",
       body: JSON.stringify(payload),
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+      headers: { 'X-Requested-With': 'XHMLttpRequest', 'Content-Type': 'application/json' }
     })
     .then(response => {
       if(response.ok){
@@ -66,7 +66,10 @@ class ReviewTile extends React.Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
+      this.setState({
+        userId: body.userVote.user_id,
+        reviewId: body.userVote.review_id
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -84,8 +87,8 @@ class ReviewTile extends React.Component {
     if (this.state.voteStatus == null){
       if(event.target.name == "like"){
         let payload = {
-          userId: this.state.userId,
-          reviewId: this.state.reviewId,
+          userId: this.props.review.user.id,
+          reviewId: this.props.id,
           vote: 1
         }
 
@@ -93,8 +96,8 @@ class ReviewTile extends React.Component {
       }
       if(event.target.name == "dislike"){
         let payload = {
-          userId: this.state.userId,
-          reviewId: this.state.reviewId,
+          userId: this.props.review.user.id,
+          reviewId: this.props.id,
           vote: -1
         }
 
@@ -137,7 +140,7 @@ render(){
         Rating: {reviewOverallRating}<br/>
         Date Reviewed: {formattedDate}<br/>
         User: {username}<br/>
-      <button name="like" onClick={this.onClick} className="buttonClass">Like</button> Likes: {this.state.likes} <button onClick={this.onClick} name="dislike" className="buttonClass">Dislike</button> Dislikes: {this.state.dislikes}
+      <button name="like" onClick={this.onClick} className={buttonClass}>Like</button> Likes: {this.state.likes} <button onClick={this.onClick} name="dislike" className={buttonClass}>Dislike</button> Dislikes: {this.state.dislikes}
       </div>
     )
   }

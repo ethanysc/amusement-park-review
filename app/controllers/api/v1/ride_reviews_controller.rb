@@ -3,7 +3,6 @@ class Api::V1::RideReviewsController < ApiController
 
   end
 
-
   def new
     new_ride_review = RideReview.new
   end
