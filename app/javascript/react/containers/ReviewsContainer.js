@@ -11,6 +11,7 @@ class ReviewsContainer extends React.Component {
     let reviews = this.props.reviews.map((review) => {
       return(
         <ReviewTile
+          parkId={this.props.parkId}
           key={review.id}
           id={review.id}
           review={review}

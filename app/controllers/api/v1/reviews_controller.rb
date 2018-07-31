@@ -14,6 +14,29 @@ class Api::V1::ReviewsController < ApiController
     end
   end
 
+  def show
+    likes = 0
+    dislikes = 0
+    votes = UserVote.where(review_id: params[:id])
+
+    votes.each do |vote|
+      if vote.vote > 0
+        likes += 1
+      else
+        dislikes += 1
+      end
+    end
+
+    voteStatus = nil
+
+    if current_user
+      vote_status = UserVote.where(review_id: params[:id], user: current_user)
+      render json: { likes: likes, dislikes: dislikes, voteStatus: vote_status[0] }
+    else
+      render json: { likes: likes, dislikes: dislikes }
+    end
+  end
+
   def review_params
     params
       .require(:review)
