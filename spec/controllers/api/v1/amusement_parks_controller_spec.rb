@@ -35,7 +35,7 @@ RSpec.describe Api::V1::AmusementParksController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq "application/json"
 
-      expect(returned_json.length).to eq 3
+      expect(returned_json.length).to eq 4
       expect(returned_json["amusement_park"]).to be_a(Hash)
       expect(returned_json["amusement_park"]["name"]).to eq park.name
       expect(returned_json["amusement_park"]["address"]).to eq park.address
