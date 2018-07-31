@@ -4,13 +4,13 @@ class Api::V1::ReviewsController < ApiController
   end
 
   def create
-    new_review = Review.new(review_params)
-    new_review.user = current_user
+    review = Review.new(review_params)
+    review.user = current_user
 
-    if new_review.save
-      render json: { review: new_review }
+    if review.save
+      render json: { review: ReviewSerializer.new(review) }
     else
-      render json: {errors: new_review.errors }
+      render json: {errors: review.errors }, status: 422
     end
   end
 
@@ -29,4 +29,5 @@ class Api::V1::ReviewsController < ApiController
         :amusement_park_id
       )
   end
+
 end

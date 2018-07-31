@@ -4,12 +4,17 @@ Rails.application.routes.draw do
 
   resources :amusement_parks, only: [:index, :show] do
     resources :reviews, only: [:index, :create]
+    resources :rides, only: [:show]
   end
+
 
   namespace :api do
     namespace :v1 do
       resources :amusement_parks, only: [:index, :show] do
         resources :reviews, only: [:create, :update]
+        resources :rides, only: [:show] do
+          resources :ride_reviews, only: [:create]
+        end
       end
       resources :reviews, only: [:create]
     end

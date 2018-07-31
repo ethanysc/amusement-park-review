@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const ReviewTile = (props) => {
+const RideReviewTile = (props) => {
 
   function formatDate(date) {
     var monthNames = [
@@ -17,20 +17,16 @@ const ReviewTile = (props) => {
     return monthNames[monthIndex] + " " + day + ' ' + year;
   }
 
-  let reviewBody = props.review.body
-  let reviewOverallRating = props.review.overall_rating
   let createdDate = props.review.created_at.substring(0, 10)
   let formattedDate = formatDate(new Date(createdDate))
-  let username = props.review.user.username
 
   return(
     <div>
-      {reviewBody}
-      {reviewOverallRating}
+      {props.review.rating}
+      {props.review.user.username}
       {formattedDate}
-      {username}
     </div>
   )
 }
 
-export default ReviewTile
+export default RideReviewTile

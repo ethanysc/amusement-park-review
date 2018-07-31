@@ -3,13 +3,15 @@ import React from 'react';
 import ParkShowTile from '../components/ParkShowTile'
 import ReviewsContainer from './ReviewsContainer'
 import ReviewFormContainer from './ReviewFormContainer'
+import RidesIndexContainer from './RidesIndexContainer'
 
 class AmusementParksShowContainer extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       amusementPark: {},
-      reviews: []
+      reviews: [],
+      rides: []
     };
 
     this.addReview = this.addReview.bind(this)
@@ -30,7 +32,8 @@ class AmusementParksShowContainer extends React.Component {
     .then(body => {
       this.setState({
         amusementPark: body.amusement_park,
-        reviews: body.reviews
+        reviews: body.reviews,
+        rides: body.rides
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -63,7 +66,7 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   render(){
-    let { amusementPark, reviews } = this.state
+    let { amusementPark, reviews, rides } = this.state
 
     let postReview = (payload) => {
       this.addReview(payload)
@@ -88,6 +91,10 @@ class AmusementParksShowContainer extends React.Component {
         <ReviewFormContainer
           id={amusementPark.id}
           postReview={postReview}
+        />
+        <RidesIndexContainer
+          parkId={amusementPark.id}
+          rides={rides}
         />
       </div>
     )
