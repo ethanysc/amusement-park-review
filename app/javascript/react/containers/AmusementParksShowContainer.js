@@ -87,7 +87,6 @@ class AmusementParksShowContainer extends React.Component {
         />
         <ReviewsContainer
           reviews={reviews}
-          parkId={amusementPark.id}
         />
         <ReviewFormContainer
           id={amusementPark.id}

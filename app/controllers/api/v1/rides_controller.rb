@@ -6,7 +6,7 @@ class Api::V1::RidesController < ApiController
       ride: Ride.find(params[:id]),
       features: serialized_features,
       ride_reviews: serialized_ride_reviews
-    }
+      }
   end
 
   def serialized_ride

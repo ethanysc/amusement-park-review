@@ -1,9 +1,9 @@
 import AmusementParksShowContainer from '../../app/javascript/react/containers/AmusementParksShowContainer';
 import ParkInfoTile from '../../app/javascript/react/components/ParkInfoTile';
 import ParkShowTile from '../../app/javascript/react/components/ParkShowTile';
-import ReviewsContainer from '../../app/javascript/react/containers/ReviewsContainer';
-import ReviewFormContainer from '../../app/javascript/react/containers/ReviewFormContainer';
-import RidesIndexContainer from '../../app/javascript/react/containers/RidesIndexContainer';
+import ReviewsContainer from '../../app/javascript/react/containers/ReviewsContainer'
+import ReviewFormContainer from '../../app/javascript/react/containers/ReviewFormContainer'
+import RidesIndexContainer from '../../app/javascript/react/containers/RidesIndexContainer'
 import fetchMock from 'fetch-mock';
 
 describe('Amusement Parks Show', () => {
@@ -84,7 +84,7 @@ describe('Amusement Parks Show', () => {
         expect(wrapper.find(ReviewsContainer)).toBePresent();
 
         expect(wrapper.find(ReviewsContainer).props()).toEqual({
-          reviews: [], parkId: '1'
+          reviews: []
         });
         done()
 

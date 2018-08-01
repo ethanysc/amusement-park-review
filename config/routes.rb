@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :amusement_parks, only: [:index, :show] do
-    resources :reviews, only: [:index, :create, :show]
+    resources :reviews, only: [:index, :create]
     resources :rides, only: [:show]
   end
 
@@ -11,13 +11,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :amusement_parks, only: [:index, :show] do
-        resources :reviews, only: [:create, :update, :show]
+        resources :reviews, only: [:create, :update]
         resources :rides, only: [:show] do
           resources :ride_reviews, only: [:create]
         end
       end
-      resources :reviews, only: [:create, :show]
-      resources :votes, only: [:create, :update, :destroy]
+      resources :reviews, only: [:create]
     end
   end
 
