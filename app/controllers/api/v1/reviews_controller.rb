@@ -1,5 +1,5 @@
 class Api::V1::ReviewsController < ApiController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :destroy]
 
   def new
     new_review = Review.new
@@ -20,7 +20,18 @@ class Api::V1::ReviewsController < ApiController
     likes = Review.find(params[:id]).tally_likes
     dislikes = Review.find(params[:id]).tally_dislikes
 
-    render json: { likes: likes, dislikes: dislikes }
+    render json: { likes: likes, dislikes: dislikes, adminStatus: admin_status? }
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+    park_id = review.amusement_park.id
+
+    if review.destroy
+      render json: { body: "deleted successfully", parkId: park_id }
+    else
+      render json: { error: "delete failed" }, status: 422
+    end
   end
 
   def review_params
@@ -39,4 +50,7 @@ class Api::V1::ReviewsController < ApiController
       )
   end
 
+  def admin_status?
+    current_user.admin?
+  end
 end

@@ -1,4 +1,6 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
+
 import VoteTile from '../components/VoteTile'
 
 class ReviewTileContainer extends React.Component {
@@ -11,13 +13,15 @@ class ReviewTileContainer extends React.Component {
       dislikes: 0,
       voteStatus: null,
       selectedButton: null,
-      voteId: null
+      voteId: null,
+      adminStatus: false
     }
     this.formatDate = this.formatDate.bind(this)
     this.onClick = this.onClick.bind(this)
     this.createVote = this.createVote.bind(this)
     this.editVote = this.editVote.bind(this)
     this.destroyVote = this.destroyVote.bind(this)
+    this.deleteReview = this.deleteReview.bind(this)
   }
 
   componentDidMount(){
@@ -37,9 +41,34 @@ class ReviewTileContainer extends React.Component {
     .then(body => {
       this.setState({
         likes: body.likes,
-        dislikes: body.dislikes
+        dislikes: body.dislikes,
+        adminStatus: body.adminStatus
       })
     })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  deleteReview(){
+    let payload = {
+      reviewId: this.props.id
+    }
+    fetch(`/api/v1/reviews/${this.props.id}`, {
+      credentials: 'same-origin',
+      method: "DELETE",
+      body: JSON.stringify(payload),
+      headers: { 'X-Requested-With': 'XHMLttpRequest', 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      if(response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => window.location.reload())
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
@@ -211,18 +240,28 @@ class ReviewTileContainer extends React.Component {
     return MONTHS[monthIndex] + ' ' + day + ' ' + year;
   }
 render(){
+
     let reviewBody = this.props.review.body
     let reviewOverallRating = this.props.review.overall_rating
     let createdDate = this.props.review.created_at.substring(0, 10)
     let formattedDate = this.formatDate(new Date(createdDate))
     let username = this.props.review.user.username
     let buttonClass = `button tiny ' + this.state.selectedButton`
+
+    let deleteButton;
+
+    if(this.state.adminStatus){
+      deleteButton = <button onClick={this.deleteReview} className="button tiny">Delete Review</button>
+    }
+
     return(
+
       <div>
         {reviewBody}<br/>
         Rating: {reviewOverallRating}<br/>
         Date Reviewed: {formattedDate}<br/>
         User: {username}<br/>
+        {deleteButton}
       <VoteTile
         likes={this.state.likes}
         dislikes={this.state.dislikes}
