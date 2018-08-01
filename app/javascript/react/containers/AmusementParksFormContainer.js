@@ -105,7 +105,7 @@ class AmusementParksFormContainer extends React.Component {
        }
      })
      .then(response => response.json())
-     .then(body => browserHistory.push('/amusement_parks'))
+     .then(body => browserHistory.push(`/amusement_parks/${body.amusement_park.id}`))
      .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
 
