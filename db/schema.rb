@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 2018_08_01_175143) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["name"], name: "index_amusement_parks_on_name", unique: true
+    t.index ["user_id"], name: "index_amusement_parks_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
