@@ -2,15 +2,16 @@ require 'rails_helper'
 
 RSpec.describe AmusementPark, type: :model do
  describe "validations" do
-   let(:park) {FactoryBot.build(:amusement_park)}
-   let(:park2) {FactoryBot.build(:amusement_park, name: "")}
-   let(:park3) {FactoryBot.build(:amusement_park, address: "")}
-   let(:park4) {FactoryBot.build(:amusement_park, city: "")}
-   let(:park5) {FactoryBot.build(:amusement_park, state: "")}
-   let(:park6) {FactoryBot.build(:amusement_park, zipcode: "")}
-   let(:park7) {FactoryBot.build(:amusement_park, phone_number: "")}
-   let(:park8) {FactoryBot.build(:amusement_park, operating_season: "")}
-   let(:park9) {FactoryBot.build(:amusement_park, website: "")}
+   let!(:user) { FactoryBot.create(:user)}
+   let(:park) {FactoryBot.build(:amusement_park, user: user)}
+   let(:park2) {FactoryBot.build(:amusement_park, name: "", user: user)}
+   let(:park3) {FactoryBot.build(:amusement_park, address: "", user: user)}
+   let(:park4) {FactoryBot.build(:amusement_park, city: "", user: user)}
+   let(:park5) {FactoryBot.build(:amusement_park, state: "", user: user)}
+   let(:park6) {FactoryBot.build(:amusement_park, zipcode: "", user: user)}
+   let(:park7) {FactoryBot.build(:amusement_park, phone_number: "", user: user)}
+   let(:park8) {FactoryBot.build(:amusement_park, operating_season: "", user: user)}
+   let(:park9) {FactoryBot.build(:amusement_park, website: "", user: user)}
 
 
    it "is valid with all fields required filled in" do

@@ -3,6 +3,7 @@ import React from 'react';
 import ParkShowTile from '../components/ParkShowTile'
 import ReviewsContainer from './ReviewsContainer'
 import ReviewFormContainer from './ReviewFormContainer'
+import EditAmusementParkLink from '../components/EditAmusementParkLink'
 import RidesIndexContainer from './RidesIndexContainer'
 
 class AmusementParksShowContainer extends React.Component {
@@ -11,6 +12,7 @@ class AmusementParksShowContainer extends React.Component {
     this.state = {
       amusementPark: {},
       reviews: [],
+      currentUserId: null,
       rides: []
     };
 
@@ -18,7 +20,9 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`/api/v1/amusement_parks/${this.props.params.id}.json`)
+    fetch(`/api/v1/amusement_parks/${this.props.params.id}.json`, {
+      credentials: 'same-origin'
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -33,6 +37,7 @@ class AmusementParksShowContainer extends React.Component {
       this.setState({
         amusementPark: body.amusement_park,
         reviews: body.reviews,
+        currentUserId: body.current_user_id,
         rides: body.rides
       })
     })
@@ -66,8 +71,13 @@ class AmusementParksShowContainer extends React.Component {
   }
 
   render(){
-    let { amusementPark, reviews, rides } = this.state
-
+    let { amusementPark, reviews, currentUserId, rides } = this.state
+    let editAmusementParkLink
+    if (currentUserId == amusementPark.user_id) {
+      editAmusementParkLink = <EditAmusementParkLink
+                                id={amusementPark.id}
+                              />
+    }
     let postReview = (payload) => {
       this.addReview(payload)
     }
@@ -84,7 +94,9 @@ class AmusementParksShowContainer extends React.Component {
           phone_number={amusementPark.phone_number}
           operating_season={amusementPark.operating_season}
           website={amusementPark.website}
+          description={amusementPark.description}
         />
+        {editAmusementParkLink}
         <ReviewsContainer
           reviews={reviews}
         />
