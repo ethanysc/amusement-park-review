@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewTile from '../components/ReviewTile'
+import ReviewTileContainer from './ReviewTileContainer'
 
 class ReviewsContainer extends React.Component {
   constructor(props){
@@ -10,7 +10,8 @@ class ReviewsContainer extends React.Component {
   render(){
     let reviews = this.props.reviews.map((review) => {
       return(
-        <ReviewTile
+        <ReviewTileContainer
+          parkId={this.props.parkId}
           key={review.id}
           id={review.id}
           review={review}

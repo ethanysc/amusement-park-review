@@ -14,6 +14,14 @@ class Api::V1::ReviewsController < ApiController
     end
   end
 
+  def show
+    review = Review.find(params[:id])
+    likes = review.tally_likes
+    dislikes = review.tally_dislikes
+
+    render json: { likes: likes, dislikes: dislikes }
+  end
+
   def review_params
     params
       .require(:review)

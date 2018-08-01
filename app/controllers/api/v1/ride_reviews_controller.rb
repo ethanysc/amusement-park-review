@@ -3,7 +3,6 @@ class Api::V1::RideReviewsController < ApiController
 
   end
 
-
   def new
     new_ride_review = RideReview.new
   end
@@ -12,7 +11,7 @@ class Api::V1::RideReviewsController < ApiController
     new_ride_review = RideReview.new(ride_review_params)
     new_ride_review.user = current_user
     new_ride_review.ride_id = params[:rideId]
-
+    
     if new_ride_review.save
       render json: { ride_review: RideReviewSerializer.new(new_ride_review) }
     else
