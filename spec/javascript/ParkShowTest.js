@@ -1,5 +1,4 @@
 import AmusementParksShowContainer from '../../app/javascript/react/containers/AmusementParksShowContainer';
-import ParkInfoTile from '../../app/javascript/react/components/ParkInfoTile';
 import ParkShowTile from '../../app/javascript/react/components/ParkShowTile';
 import ReviewsContainer from '../../app/javascript/react/containers/ReviewsContainer'
 import ReviewFormContainer from '../../app/javascript/react/containers/ReviewFormContainer'
@@ -24,7 +23,8 @@ describe('Amusement Parks Show', () => {
       zipcode: "01001",
       phone_number: "(413) 786-9300",
       website: "https://www.sixflags.com/newengland",
-      operating_season: "April through late December"
+      operating_season: "April through late December",
+      description: "hey"
     };
 
     ride = [{
@@ -69,7 +69,8 @@ describe('Amusement Parks Show', () => {
           zipcode: "01001",
           phone_number: '(413) 786-9300',
           operating_season: 'April through late December',
-          website: 'https://www.sixflags.com/newengland'
+          website: 'https://www.sixflags.com/newengland',
+          description: "hey"
         });
         done()
 

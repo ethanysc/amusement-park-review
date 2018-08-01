@@ -1,6 +1,8 @@
 import React from 'react'
 
 import ParkIndexTile from '../components/ParkIndexTile'
+import NewAmusementParkLink from '../components/NewAmusementParkLink'
+
 
 class AmusementParksIndexContainer extends React.Component {
   constructor(props){
@@ -44,8 +46,8 @@ class AmusementParksIndexContainer extends React.Component {
     return(
       <div>
         <h1>Amusement Parks:</h1>
-
         {amusementParks}
+        <NewAmusementParkLink />
       </div>
     )
   }
