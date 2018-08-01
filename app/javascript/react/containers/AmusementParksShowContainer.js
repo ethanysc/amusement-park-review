@@ -1,7 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router'
 
-
 import ParkShowTile from '../components/ParkShowTile'
 import ReviewsContainer from './ReviewsContainer'
 import ReviewFormContainer from './ReviewFormContainer'
@@ -113,10 +112,6 @@ class AmusementParksShowContainer extends React.Component {
                                   deleteAmusementPark = {deleteAmusementPark}
                                  />
     }
-
-
-
-
     return(
       <div>
         <ParkShowTile
