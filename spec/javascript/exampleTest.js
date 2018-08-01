@@ -23,7 +23,8 @@ describe('Amusement Parks Show', () => {
       zipcode: "01001",
       phone_number: "(413) 786-9300",
       website: "https://www.sixflags.com/newengland",
-      operating_season: "April through late December"
+      operating_season: "April through late December",
+      description: 'hi'
     };
 
     ride = [{
@@ -70,7 +71,8 @@ describe('Amusement Parks Show', () => {
           zipcode: "01001",
           phone_number: '(413) 786-9300',
           operating_season: 'April through late December',
-          website: 'https://www.sixflags.com/newengland'
+          website: 'https://www.sixflags.com/newengland',
+          description: 'hi'
         });
         done()
 
