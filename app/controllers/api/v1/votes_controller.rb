@@ -16,7 +16,7 @@ class Api::V1::VotesController < ApiController
 
   def update
     vote = UserVote.find_by(user_id: params[:userId], review_id: params[:reviewId])
-
+    
     if params[:vote] == -1
       vote.update(vote: -1)
     else

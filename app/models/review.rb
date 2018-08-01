@@ -17,7 +17,7 @@ class Review < ApplicationRecord
   def tally_dislikes
     dislikes = 0
     self.user_votes.each do |vote|
-      dislikes += 1 if vote.vote > 0
+      dislikes += 1 if vote.vote < 0
     end
     dislikes
   end

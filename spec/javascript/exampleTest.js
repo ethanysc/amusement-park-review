@@ -1,5 +1,4 @@
 import AmusementParksShowContainer from '../../app/javascript/react/containers/AmusementParksShowContainer';
-import ParkInfoTile from '../../app/javascript/react/components/ParkInfoTile';
 import ParkShowTile from '../../app/javascript/react/components/ParkShowTile';
 import ReviewsContainer from '../../app/javascript/react/containers/ReviewsContainer';
 import ReviewFormContainer from '../../app/javascript/react/containers/ReviewFormContainer';

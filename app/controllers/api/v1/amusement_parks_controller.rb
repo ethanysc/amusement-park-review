@@ -6,11 +6,18 @@ class Api::V1::AmusementParksController < ApiController
 
   def show
     current_user_id = current_user.id if current_user
+    admin_status = false
+
+    if user_signed_in?
+      admin_status = current_user.admin?
+    end
+
     render json: {
       amusement_park: AmusementPark.find(params[:id]),
       reviews: serialized_review,
       rides: serialized_rides,
-      current_user_id: current_user_id
+      current_user_id: current_user_id,
+      adminStatus: admin_status
     }
   end
 
@@ -75,5 +82,9 @@ class Api::V1::AmusementParksController < ApiController
 
   def serialized_rides
     ActiveModel::Serializer::ArraySerializer.new(AmusementPark.find(params[:id]).rides, each_serializer: RideSerializer)
+  end
+
+  def admin_status?
+    current_user.admin?
   end
 end

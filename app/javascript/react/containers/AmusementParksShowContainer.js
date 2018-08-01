@@ -15,6 +15,7 @@ class AmusementParksShowContainer extends React.Component {
       amusementPark: {},
       reviews: [],
       currentUserId: null,
+      adminStatus: false,
       rides: []
     };
 
@@ -41,7 +42,8 @@ class AmusementParksShowContainer extends React.Component {
         amusementPark: body.amusement_park,
         reviews: body.reviews,
         currentUserId: body.current_user_id,
-        rides: body.rides
+        rides: body.rides,
+        adminStatus: body.adminStatus
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -105,9 +107,9 @@ class AmusementParksShowContainer extends React.Component {
       this.deleteAmusementPark()
     }
 
-    let { amusementPark, reviews, currentUserId, rides } = this.state
+    let { amusementPark, reviews, currentUserId, rides, adminStatus } = this.state
     let editAmusementParkLink, deleteAmusementParkButton
-    if (currentUserId == amusementPark.user_id) {
+    if (currentUserId == amusementPark.user_id || adminStatus == true) {
       editAmusementParkLink = <EditAmusementParkLink
                                 id={amusementPark.id}
                               />
