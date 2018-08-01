@@ -8,7 +8,7 @@ class AmusementPark < ApplicationRecord
   validates :website, presence: true
   validates :operating_season, presence: true
 
-  has_many :reviews
-  has_many :rides
+  has_many :reviews, dependent: :destroy
+  has_many :rides, dependent: :destroy
   belongs_to :user
 end

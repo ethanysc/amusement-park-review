@@ -41,6 +41,15 @@ class Api::V1::AmusementParksController < ApiController
       end
   end
 
+  def destroy
+    amusement_park_to_destroy = AmusementPark.find(params[:id])
+    if amusement_park_to_destroy.destroy
+      render json: {body: 'Deleted Successfully'}
+    else
+      render json: {error: 'Delete Failed'}, status: 422
+    end
+  end
+
   private
 
   def amusement_park_params
