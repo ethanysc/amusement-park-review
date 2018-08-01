@@ -9,12 +9,16 @@ class ReviewsContainer extends React.Component {
 
   render(){
     let reviews = this.props.reviews.map((review) => {
+      let handleDelete = () => {
+        this.props.deleteReview(review.id)
+      }
       return(
         <ReviewTileContainer
           parkId={this.props.parkId}
           key={review.id}
           id={review.id}
           review={review}
+          handleDelete={handleDelete}
         />
       )
     })

@@ -77,14 +77,11 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    it('ReviewsContainer is present and receiving the correct props', (done) => {
+    it('ReviewsContainer is present', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ReviewsContainer)).toBePresent();
 
-        expect(wrapper.find(ReviewsContainer).props()).toEqual({
-          reviews: [], parkId: '1'
-        });
         done()
 
       }, 0)
