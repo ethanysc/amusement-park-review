@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::AmusementParksController, type: :controller do
 
-
   describe "GET#index" do
 
     let!(:user) { FactoryBot.create(:user)}
@@ -43,4 +42,25 @@ RSpec.describe Api::V1::AmusementParksController, type: :controller do
     end
   end
 
+  describe "DELETE#destroy" do
+    let!(:user) { FactoryBot.create(:user)}
+    let!(:park) { FactoryBot.create(:amusement_park, user: user) }
+    let!(:review) {FactoryBot.create(:review, amusement_park: park, user: user)}
+    let!(:ride) {FactoryBot.create(:ride, amusement_park: park)}
+
+    it 'should delete an amusement park and associated data' do
+      expect(AmusementPark.all.length).to eq 1
+      expect(Review.all.length).to eq 1
+      expect(Ride.all.length).to eq 1
+
+      delete :destroy, params: {id: park.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq "application/json"
+      expect(AmusementPark.all.length).to eq 0
+      expect(Review.all.length).to eq 0
+      expect(Ride.all.length).to eq 0
+    end
+  end
 end
