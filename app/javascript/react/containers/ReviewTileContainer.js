@@ -21,7 +21,6 @@ class ReviewTileContainer extends React.Component {
     this.createVote = this.createVote.bind(this)
     this.editVote = this.editVote.bind(this)
     this.destroyVote = this.destroyVote.bind(this)
-    this.deleteReview = this.deleteReview.bind(this)
   }
 
   componentDidMount(){
@@ -45,30 +44,6 @@ class ReviewTileContainer extends React.Component {
         adminStatus: body.adminStatus
       })
     })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }
-
-  deleteReview(){
-    let payload = {
-      reviewId: this.props.id
-    }
-    fetch(`/api/v1/reviews/${this.props.id}`, {
-      credentials: 'same-origin',
-      method: "DELETE",
-      body: JSON.stringify(payload),
-      headers: { 'X-Requested-With': 'XHMLttpRequest', 'Content-Type': 'application/json' }
-    })
-    .then(response => {
-      if(response.ok){
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage)
-        throw(error)
-      }
-    })
-    .then(response => response.json())
-    .then(body => window.location.reload())
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
@@ -251,7 +226,7 @@ render(){
     let deleteButton;
 
     if(this.state.adminStatus){
-      deleteButton = <button onClick={this.deleteReview} className="button tiny">Delete Review</button>
+      deleteButton = <button onClick={this.props.handleDelete} className="button tiny">Delete Review</button>
     }
 
     return(

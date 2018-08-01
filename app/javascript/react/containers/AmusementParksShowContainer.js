@@ -21,6 +21,7 @@ class AmusementParksShowContainer extends React.Component {
 
     this.addReview = this.addReview.bind(this)
     this.deleteAmusementPark = this.deleteAmusementPark.bind(this)
+    this.deleteReview = this.deleteReview.bind(this)
   }
 
   componentDidMount(){
@@ -76,6 +77,37 @@ class AmusementParksShowContainer extends React.Component {
         }
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  deleteReview(reviewId){
+    let payload = {
+      reviewId: reviewId
+    }
+    fetch(`/api/v1/reviews/${reviewId}`, {
+      credentials: 'same-origin',
+      method: "DELETE",
+      body: JSON.stringify(payload),
+      headers: { 'X-Requested-With': 'XHMLttpRequest', 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      if(response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let newReviewArray = this.state.reviews.filter( review => {
+        return review.id != reviewId
+      })
+      this.setState({
+        reviews: newReviewArray
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   deleteAmusementPark() {
@@ -136,6 +168,7 @@ class AmusementParksShowContainer extends React.Component {
         <ReviewsContainer
           reviews={reviews}
           parkId={amusementPark.id}
+          deleteReview={this.deleteReview}
         />
         <ReviewFormContainer
           id={amusementPark.id}
