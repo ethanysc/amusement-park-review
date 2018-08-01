@@ -15,28 +15,10 @@ class Api::V1::ReviewsController < ApiController
   end
 
   def show
-    likes = 0
-    dislikes = 0
-    votes = UserVote.where(review_id: params[:id])
-    votes.each do |vote|
-      if vote.vote > 0
-        likes += 1
-      else
-        dislikes += 1
-      end
-    end
-    
-    if current_user
-      user_vote = UserVote.where(review_id: params[:id], user: current_user)
+    likes = Review.find(params[:id]).tally_likes
+    dislikes = Review.find(params[:id]).tally_dislikes
 
-      if !user_vote.empty?
-        render json: { likes: likes, dislikes: dislikes, voteStatus: user_vote[0] }
-      else
-        render json: { likes: likes, dislikes: dislikes }
-      end
-    else
-      render json: { likes: likes, dislikes: dislikes }
-    end
+    render json: { likes: likes, dislikes: dislikes }
   end
 
   def review_params

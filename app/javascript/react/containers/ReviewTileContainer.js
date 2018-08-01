@@ -10,7 +10,8 @@ class ReviewTileContainer extends React.Component {
       likes: 0,
       dislikes: 0,
       voteStatus: null,
-      selectedButton: null
+      selectedButton: null,
+      voteId: null
     }
     this.formatDate = this.formatDate.bind(this)
     this.onClick = this.onClick.bind(this)
@@ -20,7 +21,7 @@ class ReviewTileContainer extends React.Component {
   }
 
   componentDidMount(){
-    fetch(`/api/v1/amusement_parks/${this.props.parkId}}/reviews/${this.props.review.id}.json`, {
+    fetch(`/api/v1/amusement_parks/${this.props.parkId}}/reviews/${this.props.id}.json`, {
       credentials: 'same-origin'
     })
     .then(response => {
@@ -34,22 +35,9 @@ class ReviewTileContainer extends React.Component {
     })
     .then(response => response.json())
     .then(body => {
-      let buttonStr = ''
-      let voteStatus = null
-
-      if (body.voteStatus && body.voteStatus.vote == 1){
-        buttonStr = 'like'
-        voteStatus = body.voteStatus.vote
-      }
-      else if (body.voteStatus && body.voteStatus.vote == -1){
-        buttonStr = 'dislike'
-        voteStatus = body.voteStatus.vote
-      }
       this.setState({
         likes: body.likes,
-        dislikes: body.dislikes,
-        voteStatus: voteStatus,
-        selectedButton: buttonStr
+        dislikes: body.dislikes
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -77,16 +65,19 @@ class ReviewTileContainer extends React.Component {
         userId: body.userVote.user_id,
         reviewId: body.userVote.review_id,
         likes: body.likes,
-        dislikes: body.dislikes
+        dislikes: body.dislikes,
+        voteStatus: body.userVote.vote,
+        voteId: body.userVote.id,
+        selectedButton: body.button
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   editVote(payload){
-    fetch(`/api/v1/votes.json`, {
+    fetch(`/api/v1/votes/${this.state.voteId}.json`, {
       credentials: 'same-origin',
-      method: "PUT",
+      method: "PATCH",
       body: JSON.stringify(payload),
       headers: { 'X-Requested-With': 'XHMLttpRequest', 'Content-Type': 'application/json' }
     })
@@ -103,14 +94,46 @@ class ReviewTileContainer extends React.Component {
     .then(body => {
       this.setState({
         userId: body.userVote.user_id,
-        reviewId: body.userVote.review_id
+        reviewId: body.userVote.review_id,
+        likes: body.likes,
+        dislikes: body.dislikes,
+        selectedButton: body.button,
+        voteId: body.userVote.id,
+        voteStatus: body.userVote.vote
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  destroyVote(){
-
+  destroyVote(payload){
+    fetch(`/api/v1/votes/${this.state.voteId}.json`, {
+      credentials: 'same-origin',
+      method: "DELETE",
+      body: JSON.stringify(payload),
+      headers: { 'X-Requested-With': 'XHMLttpRequest', 'Content-Type': 'application/json' }
+    })
+    .then(response => {
+      if(response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        userId: body.userVote.user_id,
+        reviewId: body.userVote.review_id,
+        likes: body.likes,
+        dislikes: body.dislikes,
+        selectedButton: '',
+        voteId: null,
+        voteStatus: null
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   onClick(event){
@@ -135,10 +158,38 @@ class ReviewTileContainer extends React.Component {
       }
     }
     else if (this.state.voteStatus == 1){
-
+      if(event.target.name == "dislike"){
+        let payload = {
+          userId: this.props.review.user.id,
+          reviewId: this.props.id,
+          vote: -1
+        }
+        this.editVote(payload)
+      }
+      if (event.target.name == "like"){
+        let payload = {
+          userId: this.props.review.user.id,
+          reviewId: this.props.id
+        }
+        this.destroyVote(payload)
+      }
     }
     else if(this.state.voteStatus == -1){
-
+      if(event.target.name == "like"){
+        let payload = {
+          userId: this.props.review.user.id,
+          reviewId: this.props.id,
+          vote: 1
+        }
+        this.editVote(payload)
+      }
+      if(event.target.name == "dislike"){
+        let payload = {
+          userId: this.props.review.user.id,
+          reviewId: this.props.id
+        }
+        this.destroyVote(payload)
+      }
     }
   }
 
@@ -157,13 +208,12 @@ class ReviewTileContainer extends React.Component {
     return MONTHS[monthIndex] + ' ' + day + ' ' + year;
   }
 render(){
-
     let reviewBody = this.props.review.body
     let reviewOverallRating = this.props.review.overall_rating
     let createdDate = this.props.review.created_at.substring(0, 10)
     let formattedDate = this.formatDate(new Date(createdDate))
     let username = this.props.review.user.username
-    let buttonClass = `button tiny ${this.state.selectedButton}`
+    let buttonClass = `button tiny ' + this.state.selectedButton`
     return(
       <div>
         {reviewBody}<br/>

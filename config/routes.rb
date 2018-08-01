@@ -16,7 +16,7 @@ Rails.application.routes.draw do
           resources :ride_reviews, only: [:create]
         end
       end
-      resources :reviews, only: [:create]
+      resources :reviews, only: [:create, :show]
       resources :votes, only: [:create, :update, :destroy]
     end
   end
