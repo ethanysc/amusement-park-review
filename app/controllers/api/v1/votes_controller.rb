@@ -29,9 +29,16 @@ class Api::V1::VotesController < ApiController
   end
 
   def destroy
-    binding.pry
-    render json: {}
+    vote = UserVote.find(params[:id])
+    vote.destroy
+
+    review = Review.find(params[:reviewId])
+    likes = review.tally_likes
+    dislikes = review.tally_dislikes
+
+    render json: {user_id: params[:userId], review_id: review.id, likes: likes, dislikes: dislikes}
   end
+
   private
 
   def button_decider(vote)

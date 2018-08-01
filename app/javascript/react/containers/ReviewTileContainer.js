@@ -124,8 +124,8 @@ class ReviewTileContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        userId: body.userVote.user_id,
-        reviewId: body.userVote.review_id,
+        userId: body.user_id,
+        reviewId: body.review_id,
         likes: body.likes,
         dislikes: body.dislikes,
         selectedButton: '',
