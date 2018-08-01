@@ -40,11 +40,11 @@ class AmusementParksShowContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        amusementPark: body.amusementPark,
+        amusementPark: body.amusement_park,
         reviews: body.reviews,
         currentUserId: body.current_user_id,
         rides: body.rides,
-        adminStatus: body.adminStatus
+        adminStatus: body.admin_status
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));

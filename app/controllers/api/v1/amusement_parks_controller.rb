@@ -13,11 +13,11 @@ class Api::V1::AmusementParksController < ApiController
     end
 
     render json: {
-      amusementPark: AmusementPark.find(params[:id]),
+      amusement_park: AmusementPark.find(params[:id]),
       reviews: serialized_review,
       rides: serialized_rides,
       current_user_id: current_user_id,
-      adminStatus: admin_status
+      admin_status: admin_status
     }
   end
 
