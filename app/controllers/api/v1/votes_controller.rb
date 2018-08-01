@@ -1,4 +1,6 @@
 class Api::V1::VotesController < ApiController
+  before_action :authenticate_user!
+
   def create
     new_vote = UserVote.new(user_id: params[:userId], review_id: params[:reviewId], vote: params[:vote])
     if new_vote.save

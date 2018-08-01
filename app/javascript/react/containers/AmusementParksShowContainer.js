@@ -53,6 +53,9 @@ class AmusementParksShowContainer extends React.Component {
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
               error = new Error(errorMessage)
+              if(response.status == 401){
+                alert("You must be signed in to leave reviews!!!")
+              }
           throw(error)
         }
       })

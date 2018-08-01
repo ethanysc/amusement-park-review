@@ -1,4 +1,6 @@
 class Api::V1::ReviewsController < ApiController
+  before_action :authenticate_user!, except: [:show]
+
   def new
     new_review = Review.new
   end
