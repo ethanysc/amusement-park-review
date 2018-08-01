@@ -33,7 +33,7 @@ class RideShowContainer extends React.Component {
         ride: body.ride,
         features: body.features,
         parkId: body.amusement_park_id,
-        reviews: body.ride_review
+        reviews: body.ride_reviews
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));

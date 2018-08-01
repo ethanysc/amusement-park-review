@@ -43,8 +43,6 @@ describe('Amusement Parks Show', () => {
     })
 
     wrapper = mount(<AmusementParksShowContainer params={{id: '1'}} />)
-
-
   });
 
   afterEach(fetchMock.restore);
@@ -122,6 +120,5 @@ describe('Amusement Parks Show', () => {
 
       }, 0)
     })
-
   })
 });

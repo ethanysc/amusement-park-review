@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
-  validates :overall_rating, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
+  validates :overall_rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
 
   has_many :user_votes
 
@@ -9,9 +9,7 @@ class Review < ApplicationRecord
   def tally_likes
     likes = 0
     self.user_votes.each do |vote|
-      if vote.vote > 0
-        likes += 1
-      end
+      likes += 1 if vote.vote > 0
     end
     likes
   end
@@ -19,9 +17,7 @@ class Review < ApplicationRecord
   def tally_dislikes
     dislikes = 0
     self.user_votes.each do |vote|
-      if vote.vote < 0
-        dislikes += 1
-      end
+      dislikes += 1 if vote.vote > 0
     end
     dislikes
   end

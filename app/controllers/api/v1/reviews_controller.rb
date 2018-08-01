@@ -17,8 +17,9 @@ class Api::V1::ReviewsController < ApiController
   end
 
   def show
-    likes = Review.find(params[:id]).tally_likes
-    dislikes = Review.find(params[:id]).tally_dislikes
+    review = Review.find(params[:id])
+    likes = review.tally_likes
+    dislikes = review.tally_dislikes
 
     render json: { likes: likes, dislikes: dislikes }
   end
