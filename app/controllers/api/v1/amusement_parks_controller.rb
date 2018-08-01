@@ -28,17 +28,15 @@ class Api::V1::AmusementParksController < ApiController
     end
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     edited_amusement_park = AmusementPark.find(params[:id])
-      if edited_amusement_park.update(amusement_park_params)
-        render json: { amusement_park: edited_amusement_park }
-      else
-        render json: {errors: edited_amusement_park.errors}
-      end
+    if edited_amusement_park.update(amusement_park_params)
+      render json: { amusement_park: edited_amusement_park }
+    else
+      render json: {errors: edited_amusement_park.errors}
+    end
   end
 
   private
