@@ -5,10 +5,12 @@ class AmusementParksController < ApplicationController
   def show
   end
 
+  def new
+  end
+
   def create
   end
 
-  def new
-
-  end
+  def edit
+  end 
 end

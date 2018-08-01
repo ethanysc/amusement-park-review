@@ -1,3 +1,13 @@
+user1 = FactoryBot.create(:user)
+user2 = FactoryBot.create(
+  :user,
+  email: 'ravikc@gmail.com',
+  password: 'apple1234',
+  username: 'ravikc',
+  password_confirmation: "apple1234"
+)
+
+
 AmusementPark.create!(
   name: "Six Flags New England",
   address: "1623 Main St.",
@@ -6,7 +16,8 @@ AmusementPark.create!(
   zipcode: "01001",
   phone_number: "(413) 786-9300",
   website: "https://www.sixflags.com/newengland",
-  operating_season: "April through late December")
+  operating_season: "April through late December",
+  user: user1)
 AmusementPark.create!(
   name: "Canobie Lake Park",
   address: "85 N Policy St.",
@@ -16,7 +27,8 @@ AmusementPark.create!(
   phone_number: "(603) 893-3506",
   website: "http://www.canobie.com/",
   operating_season: "May to late October",
-  description: "Amusement Park on the shore of Canobie Lake.")
+  description: "Amusement Park on the shore of Canobie Lake.",
+  user: user1)
 AmusementPark.create!(
   name: "Hersheypark",
   address: "100 Hersheypark Dr.",
@@ -26,7 +38,8 @@ AmusementPark.create!(
   phone_number: "(800) 437-7439",
   website: "http://www.hersheypark.com/",
   operating_season: "Year Round",
-  description: "Family theme park situated in Hershey.")
+  description: "Family theme park situated in Hershey.",
+  user: user2)
 AmusementPark.create!(
   name: "Six Flags Great Adventure",
   address: "1 Six Flags Blvd",
@@ -36,8 +49,8 @@ AmusementPark.create!(
   phone_number: "(732) 928-2000",
   website: "https://www.sixflags.com/greatadventure",
   operating_season: "Late March - Early December",
-  description: "Amusement park combined with a Wild Safari animal park, the second largest theme park in the world!"
-  )
+  description: "Amusement park combined with a Wild Safari animal park, the second largest theme park in the world!",
+  user: user2)
 AmusementPark.create!(
   name: "Sesame Place",
   address: "100 Sesame Rd",
@@ -47,7 +60,8 @@ AmusementPark.create!(
   phone_number: "1-215-702-ELMO",
   website: "https://sesameplace.com/philadelphia/?utm_source=YEXT&utm_medium=organic&utm_campaign=YEXT",
   operating_season: "May through December",
-  description: "Children's theme park, located on the outskirts of Philadelphia, based on the Sesame Street television program."
+  description: "Children's theme park, located on the outskirts of Philadelphia, based on the Sesame Street television program.",
+  user: user1
 )
 
 Ride.create!(
@@ -253,15 +267,6 @@ RideCatalogue.create!(
   ride: Ride.find_by(name: "Oscar's Wacky Taxi")
 )
 
-
-user1 = FactoryBot.create(:user)
-user2 = FactoryBot.create(
-  :user,
-  email: 'ravikc@gmail.com',
-  password: 'apple1234',
-  username: 'ravikc',
-  password_confirmation: "apple1234"
-)
 
 FactoryBot.create(
   :review,

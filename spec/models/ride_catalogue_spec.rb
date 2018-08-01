@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe RideCatalogue, type: :model do
  describe "validations" do
-   let!(:park) {FactoryBot.build(:amusement_park)}
+   let!(:user) { FactoryBot.create(:user)}
+   let!(:park) {FactoryBot.build(:amusement_park, user: user)}
    let!(:ride_feature) {FactoryBot.build(:ride_feature)}
    let!(:ride) {FactoryBot.build(:ride, amusement_park: park)}
    let!(:ride_catalogue1) {RideCatalogue.create(ride: ride, ride_feature: ride_feature)}
