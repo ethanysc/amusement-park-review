@@ -13,7 +13,7 @@ class Api::V1::AmusementParksController < ApiController
     end
 
     render json: {
-      amusement_park: AmusementPark.find(params[:id]),
+      amusementPark: AmusementPark.find(params[:id]),
       reviews: serialized_review,
       rides: serialized_rides,
       current_user_id: current_user_id,
@@ -29,7 +29,7 @@ class Api::V1::AmusementParksController < ApiController
     new_amusement_park = AmusementPark.new(amusement_park_params)
     new_amusement_park.user = current_user
     if new_amusement_park.save
-      render json: { amusement_park: new_amusement_park }
+      render json: { amusementPark: new_amusement_park }
     else
       render json: {errors: new_amusement_park.errors }
     end
@@ -80,9 +80,5 @@ class Api::V1::AmusementParksController < ApiController
 
   def serialized_rides
     ActiveModel::Serializer::ArraySerializer.new(AmusementPark.find(params[:id]).rides, each_serializer: RideSerializer)
-  end
-
-  def admin_status?
-    current_user.admin?
   end
 end

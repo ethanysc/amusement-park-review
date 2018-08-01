@@ -40,7 +40,7 @@ class AmusementParksShowContainer extends React.Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        amusementPark: body.amusement_park,
+        amusementPark: body.amusementPark,
         reviews: body.reviews,
         currentUserId: body.current_user_id,
         rides: body.rides,

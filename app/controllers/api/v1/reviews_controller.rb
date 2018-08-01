@@ -21,7 +21,7 @@ class Api::V1::ReviewsController < ApiController
     likes = review.tally_likes
     dislikes = review.tally_dislikes
 
-    render json: { likes: likes, dislikes: dislikes, adminStatus: admin_status? }
+    render json: { likes: likes, dislikes: dislikes, admin_status: admin_status? }
   end
 
   def destroy
@@ -29,7 +29,7 @@ class Api::V1::ReviewsController < ApiController
     park_id = review.amusement_park.id
 
     if review.destroy
-      render json: { body: "deleted successfully", parkId: park_id }
+      render json: { body: "deleted successfully", park_id: park_id }
     else
       render json: { error: "delete failed" }, status: 422
     end

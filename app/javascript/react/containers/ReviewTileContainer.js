@@ -41,7 +41,7 @@ class ReviewTileContainer extends React.Component {
       this.setState({
         likes: body.likes,
         dislikes: body.dislikes,
-        adminStatus: body.adminStatus
+        adminStatus: body.admin_status
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
