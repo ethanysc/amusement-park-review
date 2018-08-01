@@ -1,6 +1,8 @@
 import React from 'react';
 
 import RideShowTile from '../components/RideShowTile'
+import RideReviewFormContainer from './RideReviewFormContainer'
+import RideReviewsContainer from './RideReviewsContainer'
 
 class RideShowContainer extends React.Component {
   constructor(props){
@@ -8,8 +10,10 @@ class RideShowContainer extends React.Component {
     this.state = {
       ride: {},
       features: [],
-      parkId: null
+      parkId: null,
+      reviews: []
     }
+    this.addRideReview = this.addRideReview.bind(this)
   }
 
   componentDidMount(){
@@ -28,12 +32,38 @@ class RideShowContainer extends React.Component {
       this.setState({
         ride: body.ride,
         features: body.features,
-        parkId: body.amusement_park_id
+        parkId: body.amusement_park_id,
+        reviews: body.ride_reviews
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  addRideReview(payload){
+    fetch(`/api/v1/amusement_parks/${this.props.params.amusement_park_id}/rides/${this.props.params.id}/ride_reviews.json`, {
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json',
+      'X-Requested-With': 'XHMLttpRequest' },
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
+      .then(response => {
+        if(response.ok){
+          return response
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage)
+          throw(error)
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        if(body.ride_review){
+          this.setState({ reviews: this.state.reviews.concat(body.ride_review) })
+        }
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
   render(){
     return(
@@ -42,6 +72,13 @@ class RideShowContainer extends React.Component {
           id={this.state.ride.id}
           name={this.state.ride.name}
           features={this.state.features}
+        />
+        <RideReviewsContainer
+          rideReviews={this.state.reviews}
+        />
+        <RideReviewFormContainer
+          id={this.state.ride.id}
+          postRideReview={this.addRideReview}
         />
       </div>
     )

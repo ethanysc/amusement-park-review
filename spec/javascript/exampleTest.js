@@ -1,8 +1,8 @@
 import AmusementParksShowContainer from '../../app/javascript/react/containers/AmusementParksShowContainer';
 import ParkShowTile from '../../app/javascript/react/components/ParkShowTile';
-import ReviewsContainer from '../../app/javascript/react/containers/ReviewsContainer'
-import ReviewFormContainer from '../../app/javascript/react/containers/ReviewFormContainer'
-import RidesIndexContainer from '../../app/javascript/react/containers/RidesIndexContainer'
+import ReviewsContainer from '../../app/javascript/react/containers/ReviewsContainer';
+import ReviewFormContainer from '../../app/javascript/react/containers/ReviewFormContainer';
+import RidesIndexContainer from '../../app/javascript/react/containers/RidesIndexContainer';
 import fetchMock from 'fetch-mock';
 
 describe('Amusement Parks Show', () => {
@@ -23,8 +23,7 @@ describe('Amusement Parks Show', () => {
       zipcode: "01001",
       phone_number: "(413) 786-9300",
       website: "https://www.sixflags.com/newengland",
-      operating_season: "April through late December",
-      description: "hey"
+      operating_season: "April through late December"
     };
 
     ride = [{
@@ -43,6 +42,8 @@ describe('Amusement Parks Show', () => {
     })
 
     wrapper = mount(<AmusementParksShowContainer params={{id: '1'}} />)
+
+
   });
 
   afterEach(fetchMock.restore);
@@ -55,7 +56,7 @@ describe('Amusement Parks Show', () => {
     // make assertion that the tile is receiving the right props
     // rinse and repeat for each tile
 
-    it('ParkShowTile is present and receiving the correct props', (done) => {
+    fit('ParkShowTile is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ParkShowTile)).toBePresent();
@@ -70,14 +71,14 @@ describe('Amusement Parks Show', () => {
           phone_number: '(413) 786-9300',
           operating_season: 'April through late December',
           website: 'https://www.sixflags.com/newengland',
-          description: "hey"
+          description: undefined
         });
         done()
 
       }, 0)
     })
 
-    it('ReviewsContainer is present and receiving the correct props', (done) => {
+    fit('ReviewsContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ReviewsContainer)).toBePresent();
@@ -90,7 +91,7 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    it('ReviewFormContainer is present and receiving the correct props', (done) => {
+    fit('ReviewFormContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ReviewFormContainer)).toBePresent();
@@ -100,7 +101,7 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    it('RidesIndexContainer is present and receiving the correct props', (done) => {
+    fit('RidesIndexContainer is present and receiving the correct props', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(RidesIndexContainer)).toBePresent();
@@ -121,5 +122,6 @@ describe('Amusement Parks Show', () => {
 
       }, 0)
     })
+
   })
 });

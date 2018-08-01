@@ -5,9 +5,11 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   mount_uploader :profile_photo, ProfilePhotoUploader
+  has_many :user_votes
   has_many :reviews
   has_many :ride_reviews
   has_many :amusement_parks
+
   has_many :rides, through: :ride_reviews
 
   devise :database_authenticatable, :registerable,
