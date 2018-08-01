@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-
 const NewAmusementParkLink = props => {
-
   return(
     <div>
       <br></br><br></br><br></br><br></br>
