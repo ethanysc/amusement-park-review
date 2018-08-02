@@ -21,7 +21,11 @@ class Api::V1::ReviewsController < ApiController
     likes = review.tally_likes
     dislikes = review.tally_dislikes
 
-    render json: { likes: likes, dislikes: dislikes, admin_status: admin_status? }
+    if current_user
+      render json: { likes: likes, dislikes: dislikes, admin_status: admin_status? }
+    else
+      render json: { likes: likes, dislikes: dislikes, admin_status: false }
+    end
   end
 
   def destroy

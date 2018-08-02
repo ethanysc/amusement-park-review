@@ -216,13 +216,18 @@ class ReviewTileContainer extends React.Component {
     return MONTHS[monthIndex] + ' ' + day + ' ' + year;
   }
 render(){
+  let reviewBody = ''
+  let createdDate
+  let username = ''
 
-    let reviewBody = this.props.review.body
-    let createdDate = this.props.review.created_at.substring(0, 10)
+  if (this.props.review){
+    reviewBody = this.props.review.body
+    createdDate = this.props.review.created_at.substring(0, 10)
+    username = this.props.review.user.username
+  }
+
     let formattedDate = this.formatDate(new Date(createdDate))
-    let username = this.props.review.user.username
     let buttonClass = 'button tiny snip1582 ' + `${this.state.selectedButton}`
-
     let deleteButton;
 
     if(this.state.adminStatus){

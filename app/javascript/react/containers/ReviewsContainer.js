@@ -8,10 +8,12 @@ class ReviewsContainer extends React.Component {
 
 
   render(){
-    let reviews = this.props.reviews.map((review) => {
-      let handleDelete = () => {
-        this.props.deleteReview(review.id)
-      }
+    let reviews = []
+    if (this.props.reviews.length != 0){
+      reviews = this.props.reviews.map((review) => {
+        let handleDelete = () => {
+          this.props.deleteReview(review.id)
+        }
       return(
       <div >
         <ReviewTileContainer
@@ -24,6 +26,7 @@ class ReviewsContainer extends React.Component {
       </div>
       )
     })
+  }
     return(
       <div className="row wrapper all-reviews-box">
         {reviews}
