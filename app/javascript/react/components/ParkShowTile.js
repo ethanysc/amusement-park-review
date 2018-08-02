@@ -13,7 +13,7 @@ const ParkShowTile = props => {
       return false
     }
   }
-  
+
   let overallRatingsTotal = 0
   let ridesRatingTotal = 0
   let ridesRatingLength = 0

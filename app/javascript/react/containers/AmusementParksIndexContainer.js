@@ -3,7 +3,6 @@ import React from 'react'
 import ParkIndexTile from '../components/ParkIndexTile'
 import NewAmusementParkLink from '../components/NewAmusementParkLink'
 
-
 class AmusementParksIndexContainer extends React.Component {
   constructor(props){
     super(props)
@@ -39,13 +38,14 @@ class AmusementParksIndexContainer extends React.Component {
           id={park.id}
           key={park.id}
           name={park.name}
+          image={park.park_photo}
         />
       )
     })
 
     return(
       <div>
-        <h1>Amusement Parks:</h1>
+        <h1 className="page-title">Amusement Parks</h1>
         {amusementParks}
         <NewAmusementParkLink />
       </div>

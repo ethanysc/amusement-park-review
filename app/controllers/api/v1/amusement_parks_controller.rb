@@ -1,5 +1,4 @@
 class Api::V1::AmusementParksController < ApiController
-
   def index
     render json: AmusementPark.all
   end
@@ -59,7 +58,6 @@ class Api::V1::AmusementParksController < ApiController
 
   def amusement_park_params
     params
-      .require(:amusement_park)
       .permit(
         :id,
         :name,
@@ -70,7 +68,8 @@ class Api::V1::AmusementParksController < ApiController
         :phone_number,
         :website,
         :operating_season,
-        :description
+        :description,
+        :park_photo
       )
   end
 

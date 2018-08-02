@@ -10,5 +10,8 @@ class AmusementPark < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :rides, dependent: :destroy
+
   belongs_to :user
+  
+  mount_uploader :park_photo, ParkPhotoUploader
 end
