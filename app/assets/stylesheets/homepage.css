@@ -1,5 +1,5 @@
-#app {
-  background-color: #FEC3A6;
+body {
+  background-color: #E6E6EA;
 
 }
 
@@ -15,4 +15,10 @@
 .park-name {
   text-align: center;
   font-size: 20px;
+}
+
+.button {
+  font-family: 'Merienda', cursive;
+  border-radius: 5px;
+}
 }
