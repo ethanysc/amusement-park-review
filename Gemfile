@@ -33,7 +33,6 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-
 end
 
 group :development do
@@ -42,14 +41,15 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
 end
 
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'active_model_serializers'
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.2.1'
 gem 'pry-rails', group: [:development, :test]
 gem 'jquery-rails'
+gem "fog-aws", group: [:production, :development]
+gem 'fog', group: [:production, :development]
 gem 'dotenv-rails', group: [:development, :test]
 gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]

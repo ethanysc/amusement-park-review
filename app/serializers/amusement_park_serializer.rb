@@ -9,7 +9,8 @@ class AmusementParkSerializer < ActiveModel::Serializer
    :website,
    :operating_season,
    :description,
-   :user_id
+   :user_id,
+   :park_photo
 
    has_many :reviews
    has_many :rides
