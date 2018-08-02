@@ -47,9 +47,11 @@
       <%= value %>
     </div>
   <%- end -%>
-  <div id="home">
+
+  <div class="row column">
     <%= yield %>
   </div>
+
   <%= javascript_include_tag 'application' %>
 
   <%- if Rails.env.development? || Rails.env.test? -%>
