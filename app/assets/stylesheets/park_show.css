@@ -61,7 +61,7 @@
 }
 
 .rating-div{
-  width: 25em;
+  width: 50em;
 }
 .review-box{
   border-style: solid;
@@ -95,4 +95,9 @@
   margin-bottom: 3em;
   width: 40%;
   background-color: #189FB6;
+}
+
+.vote-tile{
+  margin-top: 2em;
+  margin-bottom: 2em;
 }

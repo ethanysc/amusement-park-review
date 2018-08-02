@@ -107,32 +107,10 @@ const ParkShowTile = props => {
           {descriptionDiv}
       </div>
       <div>
-      <h4 id="score-title">Average Scores</h4>
+      <h4 id="score-title">Overall Average</h4>
         <div className="row wrapper" id="overall-rating">
           {overallRatingAverage}
         </div>Overall
-          <div className="row rating-div">
-            <div className="small-4 columns park-rating">
-              {ridesRatingAvg}
-            </div>
-            <div className="small-4 columns park-rating">
-              {atmosphereRatingAvg}
-            </div>
-            <div className="small-4 columns park-rating">
-              {foodRatingAvg}
-            </div>
-          </div>
-          <div className="row rating-div">
-            <div className="small-4 columns park-rating">
-              {showsRatingAvg}
-            </div>
-            <div className="small-4 columns park-rating">
-              {staffRatingAvg}
-            </div>
-            <div className="small-4 columns park-rating">
-              {priceRatingAvg}
-            </div>
-          </div>
       </div>
     </div>
   )

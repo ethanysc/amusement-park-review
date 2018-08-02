@@ -2,7 +2,7 @@ import React from 'react';
 
 const VoteTile = props => {
   return(
-    <div>
+    <div className="vote-tile">
       <button name="like" onClick={props.onClick} className={props.buttonClass}>
         Like
       </button>
