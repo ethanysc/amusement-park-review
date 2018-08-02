@@ -166,19 +166,26 @@ class AmusementParksShowContainer extends React.Component {
         />
         {editAmusementParkLink}
         {deleteAmusementParkButton}
-        <ReviewsContainer
-          reviews={reviews}
-          parkId={amusementPark.id}
-          deleteReview={this.deleteReview}
-        />
-        <ReviewFormContainer
-          id={amusementPark.id}
-          postReview={postReview}
-        />
+        <h2 className="row wrapper title" id="title-home">Popular Rides</h2>
         <RidesIndexContainer
           parkId={amusementPark.id}
           rides={rides}
-        />
+          />
+        <div className="row wrapper">
+          <div className="review-area small-6 columns">
+            <ReviewsContainer
+              reviews={reviews}
+              parkId={amusementPark.id}
+              deleteReview={this.deleteReview}
+            />
+          </div>
+          <div className="review-area small-6 columns">
+            <ReviewFormContainer
+              id={amusementPark.id}
+              postReview={postReview}
+            />
+          </div>
+        </div>
       </div>
     )
   }

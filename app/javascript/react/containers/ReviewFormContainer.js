@@ -90,7 +90,7 @@ class ReviewFormContainer extends React.Component {
     }
 
     return(
-      <form className="callout" onSubmit={this.handleSubmit}>
+      <form id="review-form" className="callout row wrapper" onSubmit={this.handleSubmit}>
         <h1>New Review</h1>
         {errorDiv}
         <ReviewFormInput
@@ -159,7 +159,7 @@ class ReviewFormContainer extends React.Component {
           label="Comment"
           type="textarea"
         />
-        <input type="submit" className="button" value="Submit" />
+      <button type="submit" className="button medium snip1582" value="Submit">Add Review</button>
       </form>
     )
   }

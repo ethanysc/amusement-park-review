@@ -3,7 +3,7 @@ import React from 'react'
 const ParkShowTile = props => {
   let descriptionDiv;
   if (props.description != "" && props.description != null) {
-    descriptionDiv = <p>Description: {props.description}</p>
+    descriptionDiv = <p>{props.description}</p>
   }
 
   let ratingExists = (rating) => {
@@ -93,21 +93,25 @@ const ParkShowTile = props => {
 
   return(
     <div>
-      <h1>{props.name}</h1>
-      <p>{props.address}, {props.city}, {props.state}, {props.zipcode}.</p>
-      <p>Phone Number: {props.phone_number}</p>
-      <p>Operating Season: {props.operating_season}</p>
-      <p>Website: <a href={props.website}>{props.website}</a></p>
-      {descriptionDiv}
-      <h4>Average Scores</h4>
-      <p>Overall Rating: {overallRatingAverage}</p>
-      <p>Rides: {ridesRatingAvg}</p>
-      <p>Atmosphere: {atmosphereRatingAvg}</p>
-      <p>Food: {foodRatingAvg}</p>
-      <p>Shows: {showsRatingAvg}</p>
-      <p>Staff: {staffRatingAvg}</p>
-      <p>Price: {priceRatingAvg}</p>
-      <p>---------------------</p>
+      <h1 className="row wrapper title" id="title-home">{props.name}</h1>
+      <div className="info-bar row wrapper">
+        <p>
+          {`${props.address}, ${props.city}, ${props.state}, ${props.zipcode} `}
+          <span> | </span>
+          {props.phone_number} |
+          Operating Season: {props.operating_season}
+        </p>
+          <a href={props.website}>
+            {props.website}
+          </a>
+          {descriptionDiv}
+      </div>
+      <div>
+      <h4 id="score-title">Overall Average</h4>
+        <div className="row wrapper" id="overall-rating">
+          {overallRatingAverage}
+        </div>Overall
+      </div>
     </div>
   )
 }

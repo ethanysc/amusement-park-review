@@ -1,0 +1,121 @@
+#review-form{
+  border-style: solid;
+  border-color: #666666;
+  border-width: .3em;
+  border-radius: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
+  margin-bottom: 3em;
+  margin-left: .75em;
+  background-color: #FED766;
+}
+ .info-bar{
+ border-style: solid;
+ border-color: #666666;
+ border-width: .3em;
+ border-radius: 1em;
+ padding-left: 2em;
+ padding-right: 2em;
+ padding-top: .5em;
+ padding-bottom: .5em;
+ box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
+margin: auto;
+ background-color: #FED766;
+ }
+
+.ride-box{
+  border-style: solid;
+  border-color: #666666;
+  border-width: .3em;
+  border-radius: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
+  margin-top: 3em;
+  margin-bottom: 3em;
+  background-color: #FE4A49;
+  width: 25%;
+}
+
+#ride-link{
+  color: #ffffff;
+}
+
+#overall-rating{
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: .2em;
+  border-radius: 1.2em;
+  height: 2em;
+  width: 2em;
+  font-size: 3em;
+  color: #ffffff;
+  background-color: #009FB7;
+  border-style: double;
+}
+
+.park-rating{
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: .2em;
+  border-radius: 1.2em;
+  height: 2em;
+  width: 2em;
+  font-size: 2em;
+  color: #ffffff;
+  background-color: #009FB7;
+  border-style: double;
+  margin: .5em;
+}
+
+.rating-div{
+  width: 50em;
+}
+.review-box{
+  border-style: solid;
+  border-color: #666666;
+  border-width: .1em;
+  border-radius: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  width: 25%;
+}
+
+#review-box{
+  margin-top: 3em;
+  margin-bottom: 3em;
+  background-color: #ffffff;
+}
+
+.all-reviews-box{
+  border-style: solid;
+  border-color: #666666;
+  border-width: .3em;
+  border-radius: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
+  margin-top: 3em;
+  margin-bottom: 3em;
+  margin-right: .75em;
+  width: 40%;
+  background-color: #189FB6;
+}
+
+.vote-tile{
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.edit-delete-button{
+  margin-top: 3em;
+}

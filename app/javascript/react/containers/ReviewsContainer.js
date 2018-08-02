@@ -13,6 +13,7 @@ class ReviewsContainer extends React.Component {
         this.props.deleteReview(review.id)
       }
       return(
+      <div >
         <ReviewTileContainer
           parkId={this.props.parkId}
           key={review.id}
@@ -20,10 +21,11 @@ class ReviewsContainer extends React.Component {
           review={review}
           handleDelete={handleDelete}
         />
+      </div>
       )
     })
     return(
-      <div>
+      <div className="row wrapper all-reviews-box">
         {reviews}
       </div>
     )
