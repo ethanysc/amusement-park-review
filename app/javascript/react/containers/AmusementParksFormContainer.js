@@ -61,7 +61,8 @@ class AmusementParksFormContainer extends React.Component {
       website: "",
       operating_season: "",
       description: "",
-      errors: {}
+      errors: {},
+      file: []
     });
   }
 
@@ -83,7 +84,8 @@ class AmusementParksFormContainer extends React.Component {
       newAmusementPark.append("website", this.state.website);
       newAmusementPark.append("operating_season", this.state.operating_season);
       newAmusementPark.append("description", this.state.description);
-      newAmusementPark.append("photo", this.state.file[0])
+      newAmusementPark.append("park_photo", this.state.file[0])
+
       this.postAmusementPark(newAmusementPark);
       this.handleClear();
     }
@@ -105,7 +107,7 @@ class AmusementParksFormContainer extends React.Component {
        }
      })
      .then(response => response.json())
-     .then(body => browserHistory.push(`/amusement_parks/${body.amusement_park.id}`))
+     .then(body => browserHistory.push(`/amusement_parks/${body.amusementPark.id}`))
      .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
 
@@ -188,7 +190,6 @@ class AmusementParksFormContainer extends React.Component {
             content={this.state.description}
             handlerFunction={this.handleChange}
           />
-
           <section>
             <div className="dropzone">
               <Dropzone onDrop={this.onDrop}>
@@ -204,7 +205,6 @@ class AmusementParksFormContainer extends React.Component {
               </ul>
             </aside>
           </section>
-
           <input type="submit" className="button" value="Submit" />
         </form>
     )
