@@ -117,7 +117,6 @@ class AmusementParksFormContainer extends React.Component {
     } else {
       let newError = { picture: `You can only upload one photo per amusement park.`};
       this.setState({ errors: Object.assign(this.state.errors, newError) });
-      // this.setState({ message: 'You can only upload one photo per board game.'})
     }
   }
 
