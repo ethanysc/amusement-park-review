@@ -1,4 +1,4 @@
-#review-form, .info-bar {
+#review-form{
   border-style: solid;
   border-color: #666666;
   border-width: .3em;
@@ -8,10 +8,23 @@
   padding-top: .5em;
   padding-bottom: .5em;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
-  margin-top: 3em;
   margin-bottom: 3em;
+  margin-left: .75em;
   background-color: #FED766;
 }
+ .info-bar{
+ border-style: solid;
+ border-color: #666666;
+ border-width: .3em;
+ border-radius: 1em;
+ padding-left: 2em;
+ padding-right: 2em;
+ padding-top: .5em;
+ padding-bottom: .5em;
+ box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
+margin: auto;
+ background-color: #FED766;
+ }
 
 .ride-box{
   border-style: solid;
@@ -93,6 +106,7 @@
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
   margin-top: 3em;
   margin-bottom: 3em;
+  margin-right: .75em;
   width: 40%;
   background-color: #189FB6;
 }
