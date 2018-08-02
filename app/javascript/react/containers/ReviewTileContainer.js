@@ -2,6 +2,7 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 
 import VoteTile from '../components/VoteTile'
+import RatingTile from '../components/RatingTile'
 
 class ReviewTileContainer extends React.Component {
   constructor(props){
@@ -217,7 +218,6 @@ class ReviewTileContainer extends React.Component {
 render(){
 
     let reviewBody = this.props.review.body
-    let reviewOverallRating = this.props.review.overall_rating
     let createdDate = this.props.review.created_at.substring(0, 10)
     let formattedDate = this.formatDate(new Date(createdDate))
     let username = this.props.review.user.username
@@ -233,7 +233,9 @@ render(){
 
       <div>
         {reviewBody}<br/>
-        Rating: {reviewOverallRating}<br/>
+      <RatingTile
+        review = {this.props.review}
+      />
         Date Reviewed: {formattedDate}<br/>
         User: {username}<br/>
         {deleteButton}
