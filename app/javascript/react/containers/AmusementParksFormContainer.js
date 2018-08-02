@@ -117,7 +117,6 @@ class AmusementParksFormContainer extends React.Component {
     } else {
       let newError = { picture: `You can only upload one photo per amusement park.`};
       this.setState({ errors: Object.assign(this.state.errors, newError) });
-      // this.setState({ message: 'You can only upload one photo per board game.'})
     }
   }
 
@@ -132,8 +131,8 @@ class AmusementParksFormContainer extends React.Component {
       errorDiv = <div className="callout alert">{errorItems}</div>
     }
     return(
-        <form className="callout" onSubmit={this.handleSubmit}>
-          <h1>Add new Amusement Park</h1>
+        <form className="row wrapper" id="park-form" onSubmit={this.handleSubmit}>
+          <h1 className="form-header">Add new Amusement Park</h1>
           {errorDiv}
 
           <AmusementParkFormInput
@@ -205,7 +204,7 @@ class AmusementParksFormContainer extends React.Component {
               </ul>
             </aside>
           </section>
-          <input type="submit" className="button" value="Submit" />
+          <button type="submit" className="button medium snip1582" value="Submit">Add Amusement Park</button>
         </form>
     )
   }
