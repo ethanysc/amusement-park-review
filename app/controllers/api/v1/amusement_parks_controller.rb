@@ -27,7 +27,12 @@ class Api::V1::AmusementParksController < ApiController
 
   def create
     new_amusement_park = AmusementPark.new(amusement_park_params)
+    binding.pry
     new_amusement_park.user = current_user
+
+    park_photo = ParkPhoto.create(park_photo: params[:photo])
+    new_amusement_park.park_photo = park_photo
+
     if new_amusement_park.save
       render json: { amusementPark: new_amusement_park }
     else

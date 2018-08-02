@@ -1,6 +1,8 @@
 import React from 'react';
-import AmusementParkFormInput from '../components/AmusementParkFormInput';
 import { browserHistory } from 'react-router'
+import Dropzone from 'react-dropzone'
+
+import AmusementParkFormInput from '../components/AmusementParkFormInput';
 
 class AmusementParksFormContainer extends React.Component {
   constructor(props){
@@ -15,13 +17,15 @@ class AmusementParksFormContainer extends React.Component {
       website: "",
       operating_season: "",
       description: "",
-      errors: {}
+      errors: {},
+      file: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.validateEntry = this.validateEntry.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.postAmusementPark = this.postAmusementPark.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
 
   handleChange(event){
@@ -64,25 +68,23 @@ class AmusementParksFormContainer extends React.Component {
   handleSubmit(event){
     event.preventDefault();
     Object.keys(this.state).forEach(key => {
-      if (key != "errors" && key != "description") {
+      if (key != "errors" && key != "description" && key != "file") {
         this.validateEntry(key, this.state[key])
       }
     })
-
     if (Object.keys(this.state.errors).length == 0){
-      let newAmusementPark = {
-        name: this.state.name,
-        address: this.state.address,
-        city: this.state.city,
-        state: this.state.state,
-        zipcode: this.state.zipcode,
-        phone_number: this.state.phone_number,
-        website: this.state.website,
-        operating_season: this.state.operating_season,
-        description: this.state.description
-      };
+      let newAmusementPark = new FormData();
+      newAmusementPark.append("name", this.state.name);
+      newAmusementPark.append("address", this.state.address);
+      newAmusementPark.append("city", this.state.city);
+      newAmusementPark.append("state", this.state.state);
+      newAmusementPark.append("zipcode", this.state.zipcode);
+      newAmusementPark.append("phone_number", this.state.phone_number);
+      newAmusementPark.append("website", this.state.website);
+      newAmusementPark.append("operating_season", this.state.operating_season);
+      newAmusementPark.append("description", this.state.description);
+      newAmusementPark.append("photo", this.state.file[0])
       this.postAmusementPark(newAmusementPark);
-
       this.handleClear();
     }
   }
@@ -90,10 +92,8 @@ class AmusementParksFormContainer extends React.Component {
   postAmusementPark(payload){
    fetch('/api/v1/amusement_parks.json', {
      credentials: 'same-origin',
-     headers: { 'Content-Type': 'application/json',
-     'X-Requested-With': 'XHMLttpRequest' },
      method: 'POST',
-     body: JSON.stringify(payload)
+     body: payload
    })
      .then(response => {
        if(response.ok){
@@ -108,6 +108,16 @@ class AmusementParksFormContainer extends React.Component {
      .then(body => browserHistory.push(`/amusement_parks/${body.amusement_park.id}`))
      .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
+
+  onDrop(file) {
+    if(file.length == 1) {
+      this.setState({ file: file })
+    } else {
+      let newError = { picture: `You can only upload one photo per amusement park.`};
+      this.setState({ errors: Object.assign(this.state.errors, newError) });
+      // this.setState({ message: 'You can only upload one photo per board game.'})
+    }
+  }
 
   render(){
     let errorDiv;
@@ -178,6 +188,23 @@ class AmusementParksFormContainer extends React.Component {
             content={this.state.description}
             handlerFunction={this.handleChange}
           />
+
+          <section>
+            <div className="dropzone">
+              <Dropzone onDrop={this.onDrop}>
+                <p>Try dropping some files here, or click to select files to upload.</p>
+              </Dropzone>
+            </div>
+            <aside>
+              <h2>Dropped files</h2>
+              <ul>
+                {
+                  this.state.file.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+                }
+              </ul>
+            </aside>
+          </section>
+
           <input type="submit" className="button" value="Submit" />
         </form>
     )
