@@ -6,11 +6,12 @@ import AmusementParksShowContainer from './AmusementParksShowContainer'
 import AmusementParksFormContainer from './AmusementParksFormContainer'
 import AmusementParksEditContainer from './AmusementParksEditContainer'
 import RideShowContainer from './RideShowContainer'
+import NavBar from '../components/NavBar'
 
 export const App = (props) => {
   return (
     <Router history={browserHistory} >
-      <Route path='/' >
+      <Route path='/' component={NavBar}>
         <IndexRoute component={AmusementParksIndexContainer} />
         <Route path='/amusement_parks' component={AmusementParksIndexContainer} />
         <Route path='/amusement_parks/new' component={AmusementParksFormContainer} />

@@ -14,7 +14,6 @@ const ParkShowTile = props => {
       <p>Operating Season: {props.operating_season}</p>
       <p>Website: <a href={props.website}>{props.website}</a></p>
       {descriptionDiv}
-      <p>Description: {props.description}</p>
     </div>
   )
 }
