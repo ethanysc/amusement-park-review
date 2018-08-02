@@ -11,6 +11,7 @@ describe('Amusement Parks Show', () => {
   let ride;
 
   let postReview;
+  let deleteReview;
 
   beforeEach(() => {
     jasmineEnzyme();
@@ -56,10 +57,17 @@ describe('Amusement Parks Show', () => {
     // make assertion that the tile is receiving the right props
     // rinse and repeat for each tile
 
-    it('ParkShowTile is present and receiving the correct props', (done) => {
+    it('ParkShowTile is present', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ParkShowTile)).toBePresent();
+
+        done()
+      }, 0)
+    })
+
+    it('ParkShowTile is receiving the correct props', (done) => {
+      setTimeout(() => {
 
         expect(wrapper.find(ParkShowTile).props()).toEqual({
           id: '1',
@@ -74,6 +82,7 @@ describe('Amusement Parks Show', () => {
           description: "hey",
           reviews: []
         });
+
         done()
 
       }, 0)
@@ -89,7 +98,21 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    it('ReviewFormContainer is present and receiving the correct props', (done) => {
+    it('ReviewsContainer is receiving the correct props', (done) => {
+      setTimeout(() => {
+
+        expect(wrapper.find(ReviewsContainer).props()).toEqual({
+          reviews: [],
+          parkId: '1',
+          deleteReview: jasmine.any(Function)
+        })
+
+        done()
+
+      }, 0)
+    })
+
+    it('ReviewFormContainer is present', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(ReviewFormContainer)).toBePresent();
@@ -99,15 +122,37 @@ describe('Amusement Parks Show', () => {
       }, 0)
     })
 
-    it('RidesIndexContainer is present and receiving the correct props', (done) => {
+    it('ReviewFormContainer is receiving the correct props', (done) => {
+      setTimeout(() => {
+
+        expect(wrapper.find(ReviewFormContainer).props()).toEqual({
+          id: '1',
+          postReview: jasmine.any(Function)
+        })
+
+        done()
+
+      }, 0)
+    })
+
+    it('RidesIndexContainer is present', (done) => {
       setTimeout(() => {
 
         expect(wrapper.find(RidesIndexContainer)).toBePresent();
+
+        done()
+
+      }, 0)
+    })
+
+    it('RidesIndexContainer is receiving the correct props', (done) => {
+      setTimeout(() => {
 
         expect(wrapper.find(RidesIndexContainer).props()).toEqual({
           parkId: '1',
           rides: ride
         });
+
         done()
 
       }, 0)
