@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 const EditAmusementParkLink = props => {
   return(
     <Link to={`/amusement_parks/${props.id}/edit`}>
-      <button className="button snip1582">
+      <button className="button snip1582 edit-delete-button">
         Edit
       </button>
     </Link>
