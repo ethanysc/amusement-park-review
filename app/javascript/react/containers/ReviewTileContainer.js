@@ -221,17 +221,17 @@ render(){
     let createdDate = this.props.review.created_at.substring(0, 10)
     let formattedDate = this.formatDate(new Date(createdDate))
     let username = this.props.review.user.username
-    let buttonClass = `button tiny ' + this.state.selectedButton`
+    let buttonClass = 'button tiny snip1582 ' + `${this.state.selectedButton}`
 
     let deleteButton;
 
     if(this.state.adminStatus){
-      deleteButton = <button onClick={this.props.handleDelete} className="button tiny">Delete Review</button>
+      deleteButton = <button onClick={this.props.handleDelete} className="button tiny snip1582 ">Delete Review</button>
     }
 
     return(
 
-      <div>
+      <div id="review-box" className="row wrapper review-box">
         {reviewBody}<br/>
       <RatingTile
         review = {this.props.review}

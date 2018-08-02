@@ -6,7 +6,11 @@ const NewAmusementParkLink = props => {
     <div>
       <br></br><br></br><br></br><br></br>
       <div className="new-park">
-        <Link to='/amusement_parks/new' >Add New Amusement Park to be Reviewed</Link>
+        <Link to='/amusement_parks/new' >
+          <button className="button snip1582">
+            Add New Amusement Park
+          </button>
+        </Link>
       </div>
     </div>
   )

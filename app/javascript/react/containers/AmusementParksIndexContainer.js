@@ -44,8 +44,8 @@ class AmusementParksIndexContainer extends React.Component {
     })
 
     return(
-      <div>
-        <h1 className="page-title">Amusement Parks</h1>
+      <div className="row wrapper">
+        <h1 className="row wrapper title" id="title-home">Amusement Park Reviews</h1>
         {amusementParks}
         <NewAmusementParkLink />
       </div>

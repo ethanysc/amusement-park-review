@@ -8,7 +8,9 @@ const DeleteAmusementParkButton = props => {
     }
   }
   return(
-    <button onClick={onClickAction}>Delete</button>
+    <button className="button snip1582" onClick={onClickAction}>
+      Delete
+    </button>
   )
 }
 

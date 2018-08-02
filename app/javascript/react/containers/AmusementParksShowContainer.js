@@ -166,6 +166,11 @@ class AmusementParksShowContainer extends React.Component {
         />
         {editAmusementParkLink}
         {deleteAmusementParkButton}
+        <h2 className="row wrapper title" id="title-home">Popular Rides</h2>
+        <RidesIndexContainer
+          parkId={amusementPark.id}
+          rides={rides}
+          />
         <ReviewsContainer
           reviews={reviews}
           parkId={amusementPark.id}
@@ -174,10 +179,6 @@ class AmusementParksShowContainer extends React.Component {
         <ReviewFormContainer
           id={amusementPark.id}
           postReview={postReview}
-        />
-        <RidesIndexContainer
-          parkId={amusementPark.id}
-          rides={rides}
         />
       </div>
     )
