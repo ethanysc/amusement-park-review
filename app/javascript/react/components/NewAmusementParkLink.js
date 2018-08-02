@@ -5,7 +5,7 @@ const NewAmusementParkLink = props => {
   return(
     <div>
       <br></br><br></br><br></br><br></br>
-      <Link to='/amusement_parks/new'>Add New Amusement Park to be Reviewed</Link>
+      <Link to='/amusement_parks/new'><button className="button " >Add New Amusement Park</button></Link>
     </div>
   )
 }
