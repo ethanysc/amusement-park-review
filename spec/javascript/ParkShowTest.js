@@ -24,7 +24,8 @@ describe('Amusement Parks Show', () => {
       phone_number: "(413) 786-9300",
       website: "https://www.sixflags.com/newengland",
       operating_season: "April through late December",
-      description: "hey"
+      description: "hey",
+      reviews: []
     };
 
     ride = [{
@@ -70,7 +71,8 @@ describe('Amusement Parks Show', () => {
           phone_number: '(413) 786-9300',
           operating_season: 'April through late December',
           website: 'https://www.sixflags.com/newengland',
-          description: "hey"
+          description: "hey",
+          reviews: []
         });
         done()
 

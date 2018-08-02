@@ -162,6 +162,7 @@ class AmusementParksShowContainer extends React.Component {
           operating_season={amusementPark.operating_season}
           website={amusementPark.website}
           description={amusementPark.description}
+          reviews = {this.state.reviews}
         />
         {editAmusementParkLink}
         {deleteAmusementParkButton}

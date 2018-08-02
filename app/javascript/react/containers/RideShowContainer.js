@@ -72,6 +72,7 @@ class RideShowContainer extends React.Component {
           id={this.state.ride.id}
           name={this.state.ride.name}
           features={this.state.features}
+          rideReviews = {this.state.reviews}
         />
         <RideReviewsContainer
           rideReviews={this.state.reviews}

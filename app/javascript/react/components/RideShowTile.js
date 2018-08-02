@@ -11,10 +11,26 @@ const RideShowTile = props => {
     })
   }
 
+  let roundToOneDeci = (average) => {
+    return Math.round(average * 10) / 10
+  }
+
+  let ratingTotal = 0
+  let ratingAvg = "N/A"
+
+  if (props.rideReviews.length > 0) {
+    props.rideReviews.forEach(review => {
+      ratingTotal += review.rating
+    })
+    ratingAvg = roundToOneDeci((ratingTotal / props.rideReviews.length))
+
+  }
+
   return(
     <div>
       <h1>{props.name}</h1>
       {features}
+      Average Rating: {ratingAvg}
     </div>
   )
 }
