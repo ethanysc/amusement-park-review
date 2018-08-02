@@ -45,7 +45,7 @@ class AmusementParksIndexContainer extends React.Component {
 
     return(
       <div>
-        <h1>Amusement Parks</h1>
+        <h1 className="page-title">Amusement Parks</h1>
         {amusementParks}
         <NewAmusementParkLink />
       </div>

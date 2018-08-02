@@ -1,0 +1,18 @@
+#app {
+  background-color: #FEC3A6;
+
+}
+
+.page-title {
+  text-align: center;
+}
+
+.new-park {
+  text-align: center;
+  font-size: 16px;
+}
+
+.park-name {
+  text-align: center;
+  font-size: 20px;
+}
