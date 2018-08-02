@@ -28,9 +28,11 @@ const RideShowTile = props => {
 
   return(
     <div>
-      <h1>{props.name}</h1>
-      {features}
-      Average Rating: {ratingAvg}
+      <h1 className="title" id="title-home">{props.name}</h1>
+        <h4 id="score-title">Ride Average Rating</h4>
+          <div className="row wrapper" id="overall-rating">
+            {ratingAvg}
+          </div>
     </div>
   )
 }

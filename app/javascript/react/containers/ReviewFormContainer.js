@@ -91,7 +91,7 @@ class ReviewFormContainer extends React.Component {
 
     return(
       <form id="review-form" className="callout row wrapper" onSubmit={this.handleSubmit}>
-        <h1>New Review</h1>
+        <h1 className="form-header">New Review</h1>
         {errorDiv}
         <ReviewFormInput
           content={this.state.overall_rating}

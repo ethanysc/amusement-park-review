@@ -68,8 +68,8 @@ class RideReviewFormContainer extends React.Component {
       errorDiv = <div className="callout alert">{errorItems}</div>
     }
     return(
-        <form className="callout" onSubmit={this.handleSubmit}>
-          <h1>Add new Ride Review</h1>
+        <form id="ride-review-form" className="callout row wrapper" onSubmit={this.handleSubmit}>
+          <h1 className="form-header">Add New Ride Review</h1>
           {errorDiv}
 
           <RideReviewFormInput
@@ -79,7 +79,7 @@ class RideReviewFormContainer extends React.Component {
             handlerFunction={this.handleChange}
           />
 
-          <input type="submit" className="button" value="Submit" />
+        <button type="submit" className="button medium snip1582" value="Submit">Add Ride Review</button>
         </form>
     )
   }

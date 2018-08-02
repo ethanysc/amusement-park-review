@@ -8,7 +8,7 @@ class RideReviewsContainer extends React.Component {
 
 
   render(){
-    
+
     let rideReviews = this.props.rideReviews.map((rideReview) => {
       return(
         <RideReviewTile
@@ -19,7 +19,7 @@ class RideReviewsContainer extends React.Component {
       )
     })
     return(
-      <div>
+      <div className="row wrapper ride-reviews-box">
         {rideReviews}
       </div>
     )
