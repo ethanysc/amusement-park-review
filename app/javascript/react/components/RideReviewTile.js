@@ -22,9 +22,9 @@ const RideReviewTile = (props) => {
 
   return(
     <div id="ride-review-box" className="row wrapper ride-review-box">
-      Ride Rating: {props.review.rating}<br/>
-      User: {props.review.user.username}<br/>
-      Reviewed on: {formattedDate}
+      <strong>Ride Rating: </strong>{props.review.rating}<br/>
+      <strong>User: </strong>{props.review.user.username}<br/>
+      <strong>Reviewed on: </strong>{formattedDate}
     </div>
   )
 }
