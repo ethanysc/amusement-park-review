@@ -34,7 +34,6 @@ class RideShowContainer extends React.Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
       this.setState({
         ride: body.ride,
         features: body.features,
