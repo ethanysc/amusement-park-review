@@ -70,7 +70,7 @@ margin: auto;
   color: #ffffff;
   background-color: #009FB7;
   border-style: double;
-  margin: .5em;
+  margin: auto;
 }
 
 .rating-div{
@@ -118,4 +118,8 @@ margin: auto;
 
 .edit-delete-button{
   margin-top: 3em;
+}
+
+#vote {
+ background-color: #FE4A49;
 }
