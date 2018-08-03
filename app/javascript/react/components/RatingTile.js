@@ -1,7 +1,7 @@
 import React from 'react'
 
 const RatingTile = (props) => {
-  let reviewOverallRating = <p>Overall Rating: {props.review.overall_rating}</p>
+  let reviewOverallRating = <p><strong>Overall Rating: </strong>{props.review.overall_rating}</p>
   let ridesRating, atmosphereRating, foodRating, showsRating, staffRating, priceRating
 
   let propHasValue = (prop) => {
@@ -14,27 +14,27 @@ const RatingTile = (props) => {
    }
 
    if (propHasValue(props.review.rides_rating)) {
-     ridesRating = <p>Rides: {props.review.rides_rating}</p>
+     ridesRating = <p><strong>Rides: </strong>{props.review.rides_rating}</p>
    }
 
    if (propHasValue(props.review.atmosphere_rating)) {
-     atmosphereRating = <p>Atmosphere: {props.review.atmosphere_rating}</p>
+     atmosphereRating = <p><strong>Atmosphere: </strong>{props.review.atmosphere_rating}</p>
    }
 
    if (propHasValue(props.review.food_rating)) {
-     foodRating = <p>Food: {props.review.food_rating}</p>
+     foodRating = <p><strong>Food: </strong>{props.review.food_rating}</p>
    }
 
    if (propHasValue(props.review.shows_rating)) {
-     showsRating = <p>Shows: {props.review.shows_rating}</p>
+     showsRating = <p><strong>Shows: </strong>{props.review.shows_rating}</p>
    }
 
    if (propHasValue(props.review.staff_rating)) {
-     staffRating = <p>Staff: {props.review.staff_rating}</p>
+     staffRating = <p><strong>Staff: </strong>{props.review.staff_rating}</p>
    }
 
    if (propHasValue(props.review.price_rating)) {
-     priceRating = <p>Price: {props.review.price_rating}</p>
+     priceRating = <p><strong>Price: </strong>{props.review.price_rating}</p>
    }
 
   return(

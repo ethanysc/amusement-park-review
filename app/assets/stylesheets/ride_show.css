@@ -1,0 +1,55 @@
+#ride-review-form{
+  border-style: solid;
+  border-color: #666666;
+  border-width: .3em;
+  border-radius: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
+  margin: auto;
+  margin-top: 5em;
+  background-color: #FED766;
+  width: 20%;
+}
+
+.ride-reviews-box{
+  border-style: solid;
+  border-color: #666666;
+  border-width: .3em;
+  border-radius: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.35);
+  margin: auto;
+  margin-top: 5em;
+  width: 30%;
+  background-color: #189FB6;
+}
+
+#ride-review-box{
+  margin-top: 3em;
+  margin-bottom: 3em;
+
+}
+
+.ride-review-box{
+  border-style: solid;
+  border-color: #666666;
+  border-width: .1em;
+  border-radius: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  width: 30%;
+  background-color: #ffffff;
+}
+
+.youtube{
+  margin-top: 5em;
+  margin-bottom: 5em;
+}

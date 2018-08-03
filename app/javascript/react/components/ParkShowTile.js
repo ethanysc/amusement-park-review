@@ -111,7 +111,7 @@ const ParkShowTile = props => {
       <h4 id="score-title">Average Ratings</h4>
         <div className="row wrapper" id="overall-rating">
           {overallRatingAverage}
-        </div>Overall
+        </div>
       </div>
 
       <br></br>

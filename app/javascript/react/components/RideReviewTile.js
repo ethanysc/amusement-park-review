@@ -21,10 +21,10 @@ const RideReviewTile = (props) => {
   let formattedDate = formatDate(new Date(createdDate))
 
   return(
-    <div>
-      {props.review.rating}
-      {props.review.user.username}
-      {formattedDate}
+    <div id="ride-review-box" className="row wrapper ride-review-box">
+      <strong>Ride Rating: </strong>{props.review.rating}<br/>
+      <strong>User: </strong>{props.review.user.username}<br/>
+      <strong>Reviewed on: </strong>{formattedDate}
     </div>
   )
 }

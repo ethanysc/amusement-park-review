@@ -32,16 +32,19 @@ class AmusementParksIndexContainer extends React.Component {
   }
 
   render(){
-    let amusementParks = this.state.amusementParks.map((park) => {
-      return(
-        <ParkIndexTile
-          id={park.id}
-          key={park.id}
-          name={park.name}
-          image={park.park_photo}
-        />
-      )
-    })
+    let amusementParks = ''
+    if (this.state.amusementParks.length != 0){
+      amusementParks = this.state.amusementParks.map((park) => {
+        return(
+          <ParkIndexTile
+            id={park.id}
+            key={park.id}
+            name={park.name}
+            image={park.park_photo}
+          />
+        )
+      })
+    }
 
     return(
       <div className="row wrapper">

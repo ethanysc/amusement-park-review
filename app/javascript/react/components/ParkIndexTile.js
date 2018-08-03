@@ -4,11 +4,14 @@ import { Link } from 'react-router'
 const ParkIndexTile = props => {
   let image = ''
   if(props.image.url){
-    image = <img src={props.image.url} alt="profile-sample2"/>
+    image = <img src={props.image.url} />
+  }
+  else {
+    image = <img src="https://lunaparknyc.com/app/uploads/2018/03/LP_website-header-ConeyIslandCyclone.jpg" />
   }
 
   return(
-    <figure className="snip1581"><img src="https://lunaparknyc.com/app/uploads/2018/03/LP_website-header-ConeyIslandCyclone.jpg" alt="profile-sample2"/>
+    <figure className="snip1581">{image}
       <figcaption>
         <h3 className="title3">{props.name}</h3>
       </figcaption>

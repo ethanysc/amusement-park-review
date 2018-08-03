@@ -86,7 +86,6 @@ class AmusementParksEditContainer extends React.Component {
       newAmusementPark.append("operating_season", this.state.operating_season);
       newAmusementPark.append("description", this.state.description);
       newAmusementPark.append("park_photo", this.state.file[0])
-
       this.postEditedAmusementPark(newAmusementPark);
       this.handleClear();
     }
@@ -137,7 +136,7 @@ class AmusementParksEditContainer extends React.Component {
        }
      })
      .then(response => response.json())
-     .then(body => browserHistory.push(`/amusement_parks/${this.props.params.id}`))
+     .then(body => browserHistory.push(`/amusement_parks/${body.amusement_park.id}`))
      .catch(error => console.error(`Error in fetch: ${error.message}`));
  }
 
@@ -147,7 +146,6 @@ class AmusementParksEditContainer extends React.Component {
    } else {
      let newError = { picture: `You can only upload one photo per amusement park.`};
      this.setState({ errors: Object.assign(this.state.errors, newError) });
-     // this.setState({ message: 'You can only upload one photo per board game.'})
    }
  }
 
