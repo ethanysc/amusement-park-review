@@ -24,7 +24,7 @@ class YouTubeTile extends React.Component {
         videoId={this.props.youtubeId}
         opts={opts}
         onReady={this._onReady}
-        apiKey={'AIzaSyD5nIxo6RKTDUTxAlJjVWrabTVD83QBuDs'}
+        apiKey='AIzaSyD5nIxo6RKTDUTxAlJjVWrabTVD83QBuDs'
       />
       </div>
     )
