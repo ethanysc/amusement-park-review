@@ -66,75 +66,93 @@ AmusementPark.create!(
 
 Ride.create!(
   name: "Superman the Ride",
-  amusement_park: AmusementPark.find(1)
+  amusement_park: AmusementPark.find(1),
+  youtubeId: "mlC0gAB5tEk"
 )
 Ride.create!(
   name: "Batman the Dark Knight",
-  amusement_park: AmusementPark.find(1)
+  amusement_park: AmusementPark.find(1),
+  youtubeId: "4VJcpmYQ26M"
 )
 Ride.create!(
   name: "Goliath",
-  amusement_park: AmusementPark.find(1)
+  amusement_park: AmusementPark.find(1),
+  youtubeId: "kS64P0y9YOw"
 )
 Ride.create!(
   name: "Yankee Cannonball",
-  amusement_park: AmusementPark.find(2)
+  amusement_park: AmusementPark.find(2),
+  youtubeId: "cOw7kkmmXKk"
 )
 Ride.create!(
   name: "Starblaster",
-  amusement_park: AmusementPark.find(2)
+  amusement_park: AmusementPark.find(2),
+  youtubeId: "Q2nxLH2wXwk"
 )
 Ride.create!(
   name: "Boston Tea Party",
-  amusement_park: AmusementPark.find(2)
+  amusement_park: AmusementPark.find(2),
+  youtubeId: "tufpWy73kfM"
 )
 Ride.create!(
   name: "Great Bear",
-  amusement_park: AmusementPark.find(3)
+  amusement_park: AmusementPark.find(3),
+  youtubeId: "efP2k539Ems"
 )
 Ride.create!(
   name: "Lightning Racer",
-  amusement_park: AmusementPark.find(3)
+  amusement_park: AmusementPark.find(3),
+  youtubeId: "Fl7_wcqiWD0"
 )
 Ride.create!(
   name: "Skyrush",
-  amusement_park: AmusementPark.find(3)
+  amusement_park: AmusementPark.find(3),
+  youtubeId: "FY8pcsSDup8"
 )
 Ride.create!(
   name: "Zumanjaro: Drop of Doom",
-  amusement_park: AmusementPark.find(4)
+  amusement_park: AmusementPark.find(4),
+  youtubeId: "N79JKDtK4hg"
 )
 Ride.create!(
   name: "Dark Knight Coaster",
-  amusement_park: AmusementPark.find(4)
+  amusement_park: AmusementPark.find(4),
+  youtubeId: "-EpLjg7Dbpo"
 )
 Ride.create!(
   name: "Superman: Ultimate Flight",
-  amusement_park: AmusementPark.find(4)
+  amusement_park: AmusementPark.find(4),
+  youtubeId: "8hv5wU-3pKE"
 )
 Ride.create!(
   name: "El Toro",
-  amusement_park: AmusementPark.find(4)
+  amusement_park: AmusementPark.find(4),
+  youtubeId: "XBf_hHNb7WQ"
 )
 Ride.create!(
   name: "CYBORG Cyber Spin",
-  amusement_park: AmusementPark.find(4)
+  amusement_park: AmusementPark.find(4),
+  youtubeId: "JLvZ7Pzwm_M"
 )
 Ride.create!(
   name: "Sky Splash",
-  amusement_park: AmusementPark.find(5)
+  amusement_park: AmusementPark.find(5),
+  youtubeId: "EryDaCRgKLw"
 )
 Ride.create!(
   name: "Slippery Slopes",
-  amusement_park: AmusementPark.find(5)
+  amusement_park: AmusementPark.find(5),
+  youtubeId: "pLdo1eZ2XPc"
 )
 Ride.create!(
   name: "Oscar's Wacky Taxi",
-  amusement_park: AmusementPark.find(5)
+  amusement_park: AmusementPark.find(5),
+  youtubeId: "fI6ZGHojq4w"
 )
 Ride.create!(
   name: "Blast Off",
-  amusement_park: AmusementPark.find(5)
+  amusement_park: AmusementPark.find(5),
+  youtubeId: "9f_27as1h0E"
 )
 
 

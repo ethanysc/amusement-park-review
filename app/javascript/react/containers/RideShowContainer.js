@@ -3,6 +3,7 @@ import React from 'react';
 import RideShowTile from '../components/RideShowTile'
 import RideReviewFormContainer from './RideReviewFormContainer'
 import RideReviewsContainer from './RideReviewsContainer'
+import YouTubeTile from '../components/YouTubeTile'
 
 class RideShowContainer extends React.Component {
   constructor(props){
@@ -11,7 +12,8 @@ class RideShowContainer extends React.Component {
       ride: {},
       features: [],
       parkId: null,
-      reviews: []
+      reviews: [],
+      youtubeId: ""
     }
     this.addRideReview = this.addRideReview.bind(this)
   }
@@ -24,6 +26,9 @@ class RideShowContainer extends React.Component {
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
           error = new Error(errorMessage);
+          if(response.status == 401){
+            alert("You must be signed in to leave reviews!!!")
+          }
         throw(error);
       }
     })
@@ -33,7 +38,8 @@ class RideShowContainer extends React.Component {
         ride: body.ride,
         features: body.features,
         parkId: body.amusement_park_id,
-        reviews: body.ride_reviews
+        reviews: body.ride_reviews,
+        youtubeId: body.youtube_id
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -73,6 +79,7 @@ class RideShowContainer extends React.Component {
           name={this.state.ride.name}
           features={this.state.features}
           rideReviews = {this.state.reviews}
+          youtubeId={this.state.youtubeId}
         />
         <RideReviewsContainer
           rideReviews={this.state.reviews}

@@ -232,12 +232,12 @@ render(){
     return(
 
       <div id="review-box" className="row wrapper review-box">
-        {reviewBody}<br/>
+        {reviewBody}<br/><br/>
       <RatingTile
         review = {this.props.review}
       />
-        Date Reviewed: {formattedDate}<br/>
-        User: {username}<br/>
+    <strong>Date Reviewed: </strong>{formattedDate}<br/>
+        <strong> By: </strong>{username}<br/>
         {deleteButton}
       <VoteTile
         likes={this.state.likes}
